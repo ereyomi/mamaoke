@@ -1,0 +1,22 @@
+{
+  "name": "mamaokefupre",
+  "version": "0.0.1",
+  "description": "a food ecommerce app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ereyomi/mamaoke.git"
+  },
+  "keywords": [
+    "mamaoke"
+  ],
+  "author": "ereyomi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ereyomi/mamaoke/issues"
+  },
+  "homepage": "https://github.com/ereyomi/mamaoke#readme"
+}

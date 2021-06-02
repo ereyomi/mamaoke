@@ -4,7 +4,7 @@ const Product = require( './../models/Index' ).Product;
 
 const list = async ( req, res ) => {
     const {page} = req.params;
-    const limit = 19;
+    const limit = 12;
     let offset = 0;
     const currentPage = page || 1;
     offset = ( currentPage > 1 ) ? ( currentPage - 1 ) * limit : offset;
@@ -22,9 +22,10 @@ const list = async ( req, res ) => {
         const lastPage = (checkIfWhole !== 0) ? Math.floor(numOfPage + 1) : Math.floor(numOfPage);
         return res.status( 200 ).json(
             {
-                limit,
+                offset,
+                perPage: limit,
                 currentPage,
-                totalNumOfPage: numOfPage,
+                total: count,
                 lastPage,
                 data: rows,
             }

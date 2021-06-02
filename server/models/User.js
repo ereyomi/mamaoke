@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init( {
+    id: {primaryKey: true, type: DataTypes.INTEGER, autoIncrement: true},
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -22,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     password: DataTypes.STRING,
+    createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
   }, {
     sequelize,
     modelName: 'User',

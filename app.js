@@ -26,24 +26,9 @@ app.use( express.static( dir ) )
 const productController = require( './server/controllers/ProductController' );
 const {uploadSingle, uploadMultiple, postSingleImg,postMultipleImg} = require( './server/controllers/MainController' );
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
-
-  res.json(customers);
-} );
-
-
 app.get( '/api/products', productController.list);
 app.get( '/api/product/:id', productController.getOne );
 app.get( '/api/products/:page', productController.list );
-// app.post( '/api/products/img', productController.postProductImg );
-app.get( '/api/dir', ( req, res ) => {
-  return res.json(dir);
-} );
 
 app.post('/postimg', uploadSingle,postSingleImg);
 

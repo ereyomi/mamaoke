@@ -93,18 +93,10 @@ const getOne = async ( req, model ) => {
     })
   }
 }
-const postMultipleImg =  (req, res, next) => {
-    // req.files is array of `profile-files` files
-    // req.body will contain the text fields, if there were any
-   /*  var response = '<a href="/">Home</a><br>'
-    response += "Files uploaded successfully.<br>"
-    for(var i=0;i<req.files.length;i++){
-        response += `<img src="${req.files[i].path}" /><br>`
-  } */
-    
+const postMultipleImg =  (req, res, next) => {    
     return res.send( {
       success: true,
-      file: req.files
+      file: req.files // there is an array of files info
     })
 }
 module.exports = {list, getOne, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg}

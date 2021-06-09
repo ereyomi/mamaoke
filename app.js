@@ -9,8 +9,7 @@ app.use( cors() );
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 // using bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
-app.use( bodyParser.urlencoded( {extended: false} ) );
-
+app.use( bodyParser.urlencoded( {extended: true} ) );
 
 /*
 app.use('/a',express.static('/b'));
@@ -24,11 +23,12 @@ app.use( express.static( dir ) )
 /*  */
 
 const productController = require( './server/controllers/ProductController' );
-const {uploadSingle, uploadMultiple, postSingleImg,postMultipleImg} = require( './server/controllers/MainController' );
+const {upload, uploadSingle, uploadMultiple, postSingleImg,postMultipleImg} = require( './server/controllers/MainController' );
 
 app.get( '/api/products', productController.list);
 app.get( '/api/product/:id', productController.getOne );
 app.get( '/api/products/:page', productController.list );
+app.post( '/api/product', upload.any(), productController.postProduct );
 
 app.post('/postimg', uploadSingle,postSingleImg);
 

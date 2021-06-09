@@ -19,5 +19,12 @@ const getOne = async ( req, res ) => {
          return res.status( 200 ).json( data )
     }
 }
+const postProduct = async ( req, res ) => {
+   // const d = await MainController.create( Product );
+   console.log(req.body)
+    return res.status( 200 ).json( {
+        r: 'prob'
+    })
+}
 
-module.exports = {list, getOne}
+module.exports = {list, getOne, postProduct}

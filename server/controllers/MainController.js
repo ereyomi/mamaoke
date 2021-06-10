@@ -79,7 +79,7 @@ const getOne = async ( req, model ) => {
     }
 }
 const create = async (model, data) => {
-  const createData = await model.create( {...data} );
+  const createData = await model.create( data );
   return createData;
 }
  const postSingleImg = (req, res) => {
@@ -103,4 +103,7 @@ const postMultipleImg =  (req, res, next) => {
       file: req.files // there is an array of files info
     })
 }
-module.exports = {upload, list, getOne, create, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg}
+const getFileWithPath = (requestFile) => {
+  return requestFile.path.replace(/\\/g, "/").substring('public'.length);
+}
+module.exports = {upload, list, getOne, create, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}

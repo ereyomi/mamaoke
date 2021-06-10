@@ -82,7 +82,32 @@ const create = async (model, data) => {
   const createData = await model.create( data );
   return createData;
 }
- const postSingleImg = (req, res) => {
+
+const update = async ( model, request ) => {
+  console.log(request.body);
+  const { body } = request;
+  const { id } = body;
+
+  if (id === undefined) {
+    return {
+      errors: ["id is required"],
+      message: "",
+      data: {},
+    };
+  }
+
+  let data = await model.update( body, {where: {id}} );
+  console.log(data, )
+  if (data instanceof Array) {
+    data = await model.findOne({ where: { id } });
+    return { data, message: "update successful", errors: [] };
+  }
+
+  return { errors: ["not found"], message: [], data: {} };
+};
+
+
+const postSingleImg = (req, res) => {
   const host = req.host;
   const filePath = req.protocol + "://" + host +  req.file.path.replace(/\\/g, "/").substring('public'.length);
   if (!req.file) {
@@ -97,13 +122,17 @@ const create = async (model, data) => {
     })
   }
 }
+
+
 const postMultipleImg =  (req, res, next) => {    
     return res.send( {
       success: true,
       file: req.files // there is an array of files info
     })
 }
+
+
 const getFileWithPath = (requestFile) => {
   return requestFile.path.replace(/\\/g, "/").substring('public'.length);
 }
-module.exports = {upload, list, getOne, create, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}
+module.exports = {upload, list, getOne, create, update, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}

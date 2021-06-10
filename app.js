@@ -29,6 +29,7 @@ app.get( '/api/products', productController.list);
 app.get( '/api/product/:id', productController.getOne );
 app.get( '/api/products/:page', productController.list );
 app.post( '/api/product', upload.any(), productController.postProduct );
+app.patch( '/api/product', productController.updateProductDetails );
 
 app.post('/postimg', uploadSingle,postSingleImg);
 

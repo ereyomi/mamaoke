@@ -35,8 +35,15 @@ const postProduct = async ( req, res ) => {
         return res.status( 400 ).json( {
            error: 'Unable to create product at this time'
         })
+    } 
+}
+const updateProductDetails = async ( req, res ) => {
+    const data = await MainController.update( Product, req )
+    if ( data ) {
+        return res.status( 200 ).json(data)
+    } else {
+        return res.status( 400 ).json(data)
     }
-    
 }
 
-module.exports = {list, getOne, postProduct}
+module.exports = {list, getOne, postProduct, updateProductDetails}

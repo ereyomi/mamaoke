@@ -84,7 +84,6 @@ const create = async (model, data) => {
 }
 
 const update = async ( model, request ) => {
-  console.log(request.body);
   const { body } = request;
   const { id } = body;
 
@@ -105,6 +104,23 @@ const update = async ( model, request ) => {
 
   return { errors: ["not found"], message: [], data: {} };
 };
+
+const deleteModel = async (model, request) => {
+  try {
+    const { id } = request.body;
+    const data = await model.destroy({
+        where: {
+          id,
+        }
+    } );
+    return { data, message: "update successful", errors: [] }; 
+
+  } catch(error) {
+    return { errors: "looks like there is an error while trying to delete ", message: [], data: {} };
+  };
+
+
+}
 
 
 const postSingleImg = (req, res) => {
@@ -135,4 +151,4 @@ const postMultipleImg =  (req, res, next) => {
 const getFileWithPath = (requestFile) => {
   return requestFile.path.replace(/\\/g, "/").substring('public'.length);
 }
-module.exports = {upload, list, getOne, create, update, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}
+module.exports = {upload, list, getOne, create, update, deleteModel, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}

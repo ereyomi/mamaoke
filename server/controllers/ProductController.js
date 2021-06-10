@@ -45,5 +45,13 @@ const updateProductDetails = async ( req, res ) => {
         return res.status( 400 ).json(data)
     }
 }
+const deleteProduct = async ( req, res ) => {
+    const data = await MainController.deleteModel( Product, req )
+    if ( data ) {
+        return res.status( 200 ).json(data)
+    } else {
+        return res.status( 400 ).json(data)
+    }
+}
 
-module.exports = {list, getOne, postProduct, updateProductDetails}
+module.exports = {list, getOne, postProduct, updateProductDetails, deleteProduct}

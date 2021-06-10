@@ -30,6 +30,7 @@ app.get( '/api/product/:id', productController.getOne );
 app.get( '/api/products/:page', productController.list );
 app.post( '/api/product', upload.any(), productController.postProduct );
 app.patch( '/api/product', productController.updateProductDetails );
+app.delete( '/api/product', productController.deleteProduct );
 
 app.post('/postimg', uploadSingle,postSingleImg);
 

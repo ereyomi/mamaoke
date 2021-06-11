@@ -21,20 +21,10 @@ const dir = path.join(__dirname, 'public');
 
 app.use( express.static( dir ) )
 /*  */
+//router routes
+const productRouter = require('./server/router/ProductRouter')
+app.use('/api', productRouter);
 
-const productController = require( './server/controllers/ProductController' );
-const {upload, uploadSingle, uploadMultiple, postSingleImg,postMultipleImg} = require( './server/controllers/MainController' );
-
-app.get( '/api/products', productController.list);
-app.get( '/api/product/:id', productController.getOne );
-app.get( '/api/products/:page', productController.list );
-app.post( '/api/product', upload.any(), productController.postProduct );
-app.patch( '/api/product', productController.updateProductDetails );
-app.delete( '/api/product', productController.deleteProduct );
-
-app.post('/postimg', uploadSingle,postSingleImg);
-
-app.post('/multiple', uploadMultiple,postMultipleImg)
 
 const port = process.env.PORT || 3100;
 

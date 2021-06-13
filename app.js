@@ -24,7 +24,7 @@ app.use( express.static( dir ) )
 //router routes
 const productRouter = require('./server/router/ProductRouter')
 app.use('/api', productRouter);
-
+/*  */
 
 const port = process.env.PORT || 3100;
 

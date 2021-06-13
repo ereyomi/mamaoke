@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       Product.belongsTo( models.Category)
       Product.hasMany( models.Order, {
         foreignKey: {
-          name: 'product_id',
           type: DataTypes.INTEGER,
           allowNull: false,
         }
@@ -25,15 +24,15 @@ module.exports = (sequelize, DataTypes) => {
     id: {primaryKey: true, type: DataTypes.INTEGER, autoIncrement: true},
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    product_img_url: {
+    productImgUrl: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     slug: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    sec_price: DataTypes.INTEGER, autoIncrement: true,
-    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-    updated_at: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
+    secPrice: DataTypes.INTEGER,
+    createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    updatedAt: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
   }, {
     sequelize,
     modelName: 'Product',

@@ -14,16 +14,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      category_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'categories',
-          key: 'id',
-        }
-      },
-      product_img_url: {
-        type: Sequelize.STRING
+      productImgUrl: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       slug: {
         type: Sequelize.STRING
@@ -31,14 +24,14 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER
       },
-      sec_price: {
+      secPrice: {
         type: Sequelize.INTEGER
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

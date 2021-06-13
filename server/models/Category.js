@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Category.hasMany(models.Product, {
         foreignKey: {
-          name: 'category_id',
           type: DataTypes.INTEGER,
           allowNull: false,
         }
@@ -24,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     id: {primaryKey: true, type: DataTypes.INTEGER, autoIncrement: true},
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-    updated_at: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
+    createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    updatedAt: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
   }, {
     sequelize,
     modelName: 'Category',

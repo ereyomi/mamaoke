@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Order.init({
     id: {primaryKey: true, type: DataTypes.INTEGER, autoIncrement: true},
     status: DataTypes.INTEGER,
-    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-    updated_at: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
+    createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    updatedAt: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
   }, {
     sequelize,
     modelName: 'Order',

@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
        */
         User.hasMany(models.Order, {
           foreignKey: {
-          name: 'user_id',
           type: DataTypes.INTEGER,
           allowNull: false,
         }
@@ -41,8 +40,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: DataTypes.INTEGER,
     password: DataTypes.STRING,
-    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-    updated_at: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
+    createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    updatedAt: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
   }, {
     sequelize,
     modelName: 'User',

@@ -1,0 +1,26 @@
+@import "./components/input";
+@import "./components/fonts";
+@import "./components/typography";
+@import "./components/colors";
+@import "./components/border";
+@import "./components/images";
+@import "./components/sizing";
+@import "./components/boxShadow";
+@import "./components/buttons";
+
+body {
+    background: $app-tetiary !important;
+}
+
+/* 
+
+box {
+    border: 1px solid var(--gray);
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgb(19 21 51 / 3%);
+    background: var(--white);
+    border-radius: 4px;
+    padding: 24px 32px;
+
+
+*/

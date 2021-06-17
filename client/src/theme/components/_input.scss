@@ -1,0 +1,196 @@
+@import "../mixins";
+@import "../variables";
+
+
+.app-form {
+    @include flexbox;
+    @include flex-direction(column-reverse);
+    width: 100%;
+    @include align-items(flex-start);
+}
+
+.form {
+    @include flexbox;
+    width: 100%;
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include flex-wrap(wrap);
+    > .input-prefixIcon {
+        @include flexbox;
+        @include justify-content(center);
+        @include align-items(center);
+        @include flex-wrap(wrap);
+        padding: rem(8) rem(16) rem(8) rem(16);
+        .icon {
+            font-family: $font-helveticaNeue;
+            font-size: rem(14) !important;
+            line-height: rem(16) !important;
+            color: $app-grey;
+        }
+    }
+
+    input {
+        font-family: $font-montserrat;
+        font-weight: normal;
+        font-style: normal;
+        color: $rc-black;
+        font-size: rem(14) !important;
+        line-height: rem(16) !important;
+        padding: rem(8) rem(16);
+        border-radius: rem(2);
+        letter-spacing: 0;
+        width: 100%;
+        border: none;
+        background: none;
+        border: $rc-accent-blue-60-outline;
+        display: block;
+        @include inputPlaceholder() {
+            color: $app-grey;
+            opacity: 1;
+        }
+        &.input-error,
+        &:invalid {
+            border: $rc-red-outline;
+            @include inputPlaceholder() {
+                color: $rc-red;
+            }
+        }
+        &:hover {
+            border: $rc-secondary-ouline;
+        }
+        &:focus {
+            color: $rc-black !important;
+            border: $rc-secondary-focus-outline;
+            @include inputPlaceholder() {
+                opacity: 0;
+            }
+        }
+        
+    }
+    
+    &.form-group-without-prefixIcon {
+        &.form-group-without-prefixIcon-focus {
+            input {
+                color: $rc-black !important;
+                border: $rc-secondary-focus-outline !important;
+                @include inputPlaceholder() {
+                    color: $rc-black !important;
+                }
+            }
+        }
+        &.form-group-without-prefixIcon-error {
+            input {
+                color: $rc-red !important;
+                border: $rc-red-outline !important;
+                @include inputPlaceholder() {
+                    color: $red !important;
+                }
+            }
+        }
+        &.form-group-without-prefixIcon-disabled {
+            pointer-events: none;
+            input {
+                border: $rc-secondary-ouline;
+                background: $rc-light-grey;
+                color: $rc-accent-blue-30;
+                @include inputPlaceholder() {
+                    color: $rc-accent-blue-30;
+                }
+            }
+        }
+    }
+
+    &.form-group-with-prefixIcon {
+        border: $rc-accent-blue-60-outline;
+        border-radius: rem(2);
+        &:hover {
+           border: $rc-secondary-ouline;
+        }
+        input {
+            padding: rem(8) rem(12) rem(8) 0;
+            border: none !important;
+            position: relative;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            width: 1%;
+            outline: none !important;
+            &:focus {
+                border: none;
+                & + .input-prefixIcon {
+                    .input-prefixIcon {
+                         color: $rc-black !important;
+                    }
+                }
+            } 
+            &:hover {
+                border: none;
+            }
+        }
+        &:focus-within {
+            border: $rc-secondary-focus-outline;
+        }
+
+        &.form-group-with-prefixIcon-focus {
+            border: $rc-secondary-focus-outline;
+            input {
+                color: $rc-black !important;
+                @include inputPlaceholder() {
+                    color: $rc-black !important;
+                }
+            }
+            > .input-prefixIcon {
+                .icon {
+                    color: $rc-black !important;
+                }
+            }
+        }
+        &.form-group-with-prefixIcon-error {
+            border: $rc-red-outline;
+            input {
+                color: $rc-red !important;
+                @include inputPlaceholder() {
+                    color: $rc-red;
+                }
+            }
+            > .input-prefixIcon {
+                .icon {
+                    color: $rc-red;
+                }
+            }
+        }
+        &.form-group-with-prefixIcon-filled {
+            > .input-prefixIcon {
+                .icon {
+                     color: $rc-black !important;
+                }
+            }
+        }
+        &.form-group-with-prefixIcon-disabled {
+            pointer-events: none;
+            border: $rc-secondary-ouline;
+            background: $rc-light-grey;
+            input {
+                color: $rc-accent-blue-30;
+                @include inputPlaceholder() {
+                    color: $rc-accent-blue-30;
+                }
+            }
+            > .input-prefixIcon {
+                .icon {
+                     color: $rc-accent-blue-30;
+                }
+            }
+        }
+    }
+
+    & + label {
+        opacity:0;
+        transition: all .3s ease-in-out .15s;
+    }
+
+    &:focus-within {
+        & + label {
+            opacity:1;
+        }
+    }
+}

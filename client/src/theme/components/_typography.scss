@@ -1,0 +1,223 @@
+@import "../variables";
+@import "../mixins";
+
+$font-size-base: 1rem;
+$font-family-base: $font-family-sans-serif;
+
+.montserrat-regular-font {
+  font-family: $font-montserrat;
+  font-weight: normal;
+}
+
+.montserrat-medium-font {
+  font-family: $font-montserrat;
+  font-weight: 500;
+}
+
+.montserrat-bold-font {
+  font-family: $font-montserrat;
+  font-weight: bold;
+}
+
+.montserrat-semibold-font {
+  font-family: $font-montserrat;
+  font-weight: 600;
+}
+
+.helvetica-neue-regular {
+  font-family: $font-helveticaNeue;
+}
+
+.text-weight-medium {
+  font-weight: 500 !important;
+}
+
+.text-weight-normal {
+  font-weight: normal !important;
+}
+
+.text-weight-bold {
+  font-weight: 600;
+}
+
+.ls-0 {
+  letter-spacing: 0 !important;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-montserrat;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: $rc-accent-blue-160;
+}
+
+h1 {
+  font-size: rem(37) !important;
+  line-height: rem(40) !important;
+}
+
+h2 {
+  font-size: rem(30) !important;
+  line-height: rem(40) !important;
+}
+
+h3 {
+  font-size: rem(22) !important;
+  line-height: rem(32) !important;
+}
+
+.text2 {
+  font-size: rem(14);
+  line-height: rem(20);
+  opacity: 0.87;
+}
+
+.text2-med {
+  @extend .text-2;
+  font-weight: 500;
+  opacity: 1;
+  letter-spacing: rem(0.1);
+  line-height: rem(24);
+}
+
+.text-body {
+  font-size: rem(18);
+  line-height: rem(28);
+  letter-spacing: rem(0.5);
+}
+
+.text-body2 {
+  @extend .text2;
+  color: $black;
+}
+
+.text-title {
+  font-size: rem(32);
+  line-height: rem(40);
+  letter-spacing: rem(-0.5);
+  color: $dark-green;
+
+  @include media-breakpoint-down(sm) {
+    font-size: rem(20);
+    letter-spacing: rem(0.31);
+    line-height: rem(24);
+  }
+}
+
+.footer {
+  .text-2 {
+    @extend .text2;
+    color: $white;
+    letter-spacing: rem(0.25);
+  }
+
+  .text2-med {
+    @extend .text2-med;
+    color: $white;
+  }
+}
+
+.green-text {
+  font-size: $h4-font-size;
+  color: $green;
+}
+
+.text-green {
+  color: $green;
+}
+
+.step {
+  color: $grey4;
+  font-size: $h5-font-size;
+  line-height: rem(16);
+  font-weight: 500;
+}
+
+.description {
+  font-size: $h6-font-size;
+  line-height: rem(14);
+  font-weight: bold;
+}
+
+.h6-grey {
+  @extend .h6;
+  color: $grey4;
+  font-weight: normal;
+}
+
+// Page elements
+
+.page-container-title {
+  @extend .h4;
+  margin-bottom: 0;
+  color: $black;
+  line-height: rem(22);
+}
+
+// Page content
+.content-field-label {
+  color: $grey4;
+  font-weight: 500;
+  font-size: rem(16);
+  line-height: rem(24);
+  margin-bottom: rem(4);
+}
+
+.group-header {
+  @extend .h3;
+  @extend .px-0 !optional;
+  font-weight: normal;
+  padding-bottom: rem(4);
+  border-bottom: rem(1) solid $red;
+}
+
+.text-small {
+  font-size: rem(12);
+  line-height: rem(16);
+}
+
+.text-x-small {
+  font-size: rem(11);
+  line-height: rem(16);
+}
+
+.s11-h16 {
+  font-size: rem(11) !important;
+  line-height: rem(16) !important;
+}
+
+.s12-h16 {
+  font-size: rem(12) !important;
+  line-height: rem(16) !important;
+}
+
+.s14-h16 {
+  font-size: rem(14) !important;
+  line-height: rem(16) !important;
+}
+
+.s15-h24 {
+  font-size: rem(15) !important;
+  line-height: rem(24) !important;
+}
+
+.s22-h32 {
+  font-size: rem(30) !important;
+  line-height: rem(40) !important;
+}
+
+.s30-h40 {
+  font-size: rem(30) !important;
+  line-height: rem(40) !important;
+}
+
+.s37-h40 {
+  font-size: rem(37) !important;
+  line-height: rem(40) !important;
+}
+
+.overflow-x {
+  overflow: hidden !important;
+}

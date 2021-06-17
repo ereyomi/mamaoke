@@ -1,0 +1,19 @@
+@import "../mixins";
+@import "../variables";
+
+.app-primary-bg {
+    background: $app-tetiary !important;
+}
+
+.white-bg {
+    background: $white;
+}
+.grey-bg {
+    background: $grey;
+}
+.medium-grey-2-bg {
+    background: $medium-grey-2 !important;
+}
+.medium-grey-2-color {
+    color: $medium-grey-2 !important;
+}

@@ -5,27 +5,23 @@ $font-size-base: 1rem;
 $font-family-base: $font-family-sans-serif;
 
 .montserrat-regular-font {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: normal;
 }
 
 .montserrat-medium-font {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: 500;
 }
 
 .montserrat-bold-font {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: bold;
 }
 
 .montserrat-semibold-font {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: 600;
-}
-
-.helvetica-neue-regular {
-  font-family: $font-helveticaNeue;
 }
 
 .text-weight-medium {
@@ -47,10 +43,10 @@ $font-family-base: $font-family-sans-serif;
 h1,
 h2,
 h3 {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: 500;
   letter-spacing: 0;
-  color: $rc-accent-blue-160;
+  color: var(--app-color-323141);
 }
 
 h1 {

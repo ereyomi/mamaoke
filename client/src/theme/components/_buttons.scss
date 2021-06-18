@@ -6,8 +6,8 @@ $btn-primary-color: $white;
 $def-box-shadow: rgba(0, 0, 0, 0.15);
 $btn-padding-y-zero: 0;
 $btn-padding-x-zero: 0;
-@mixin button-style(
-  $background,
+
+@mixin button-style($background,
   $border,
   $color,
   $active-background,
@@ -19,12 +19,12 @@ $btn-padding-x-zero: 0;
   $hover-shadow,
   $disabled-bg,
   $disabled-border,
-  $disabled-color
-) {
+  $disabled-color) {
   color: $color;
   background: $background;
   border: $border;
   box-shadow: none !important;
+
   &:focus,
   &.focus {
     outline: 0 !important;
@@ -33,41 +33,43 @@ $btn-padding-x-zero: 0;
     border: $hover-border !important;
     color: $hover-color;
   }
+
   &:hover,
   &.hover {
     background: $hover-bg !important;
     border: $hover-border !important;
     color: $hover-color;
     box-shadow: 0 rem(2) rem(8) 0 $hover-shadow;
-    @if $background == 'none' and $border == 'none' {
+
+    @if $background=='none'and $border=='none' {
       text-decoration: underline;
     }
   }
+
   &:disabled,
   &.disabled {
     background: $disabled-bg !important;
     border: $disabled-border !important;
     color: $disabled-color !important;
     opacity: 1;
-    text-decoration: $rc-none;
+    text-decoration: $app-none;
     pointer-events: none;
   }
+
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
+  .show>&.dropdown-toggle {
     color: $active-color;
     background: $active-background;
     border: $active-border;
   }
 }
 
-@mixin button-size(
-  $padding-y,
+@mixin button-size($padding-y,
   $padding-x,
   $font-size,
   $line-height,
-  $border-radius
-) {
+  $border-radius) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
@@ -75,46 +77,43 @@ $btn-padding-x-zero: 0;
 }
 
 .btn {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: normal;
-  min-width: $rc-btn-min-width;
-  @include button-size(
-    $btn-padding-y,
+  min-width: $btn-min-width;
+  @include button-size($btn-padding-y,
     $btn-padding-x,
     $btn-font-size,
     $btn-line-height,
-    $btn-border-radius
-  );
+    $btn-border-radius);
 }
+
 .btn-no-padding {
-  font-family: $font-montserrat;
+  font-family: var(--app-font-family-montserrat);
   font-weight: normal;
-  min-width: $rc-btn-min-width;
-  @include button-size(
-    $btn-padding-y-zero,
+  min-width: $btn-min-width;
+  @include button-size($btn-padding-y-zero,
     $btn-padding-x-zero,
     $btn-font-size,
     $btn-line-height,
-    $btn-border-radius
-  );
+    $btn-border-radius);
   cursor: pointer;
 }
+
 // @mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
 
 .btn-primary {
-  @include button-style(
-    $btn-primary-bg,
-    $rc-primary-outline,
+  @include button-style($btn-primary-bg,
+    $app-primary-outline,
     $white,
     $btn-primary-bg,
     $btn-primary-bg,
     $white,
-    $rc-primary-hover,
-    $rc-primary-hover-outline,
+    $app-primary-hover,
+    $app-primary-hover-outline,
     $white,
     $def-box-shadow,
-    $rc-disable-bg,
-    $rc-disabled-ouline,
+    $app-disable-bg,
+    $app-disable-ouline,
     $white,
   );
   // &:not(:active):not(:hover):not(:focus) {
@@ -123,71 +122,46 @@ $btn-padding-x-zero: 0;
   // }
 }
 
-.btn-secondary {
-  $def-shadow: transparent;
-  @include button-style(
-    $white,
-    $rc-primary-outline,
-    $rc-primary,
-    $white,
-    $rc-primary-outline,
-    $rc-primary,
-    $rc-secondary-hover,
-    $rc-primary-outline,
-    $rc-primary,
-    $def-shadow,
-    $white,
-    $rc-disabled-ouline,
-    $rc-disable-bg
-  );
-  background-image: none;
-}
-
 .btn-secondary-b {
   $def-shadow: transparent;
-  @include button-style(
+  @include button-style($white,
+    $app-primary-outline,
+    $black,
     $white,
-    $rc-primary-outline,
-    $rc-black,
-    $white,
-    $rc-primary-outline,
-    $rc-primary,
-    $rc-secondary-hover,
-    $rc-primary-outline,
-    $rc-primary,
+    $app-primary-outline,
+    $app-primary,
+    $app-secondary-hover,
+    $app-primary-outline,
+    $app-primary,
     $def-shadow,
     $white,
-    $rc-disabled-ouline,
-    $rc-disable-bg
-  );
+    $app-disable-ouline,
+    $app-disable-bg);
   background-image: none;
 }
 
 .btn-tertiary {
   $def-shadow: transparent;
-  @include button-style(
-    $rc-bg-none,
-    $rc-none,
-    $rc-primary,
-    $rc-none,
-    $rc-none,
-    $rc-primary,
-    $rc-none,
-    $rc-none,
-    $rc-primary,
+  @include button-style($app-none,
+    $app-none,
+    $app-primary,
+    $app-none,
+    $app-none,
+    $app-primary,
+    $app-none,
+    $app-none,
+    $app-primary,
     $def-shadow,
-    $rc-none,
-    $rc-none,
-    $rc-primary-30
-  );
+    $app-none,
+    $app-none,
+    $app-primary);
   font-weight: 500;
   background-image: none;
 }
 
 .btn-danger {
   $def-shadow: transparent;
-  @include button-style(
-    $btn-danger-bg,
+  @include button-style($btn-danger-bg,
     $red,
     $white,
     $light-red,
@@ -199,37 +173,5 @@ $btn-padding-x-zero: 0;
     $def-box-shadow,
     $medium-green-2,
     $medium-green-2,
-    $grey4
-  );
-}
-.btn-export{
-  background-color: transparent !important;  
-  box-sizing: border-box;
-  border: 2px solid #D9471F;
-  border-radius: 3px !important;
-  color: $rc-black;
-  font-family: Montserrat;
-  font-size: rem(12);
-  letter-spacing: 0;
-  line-height: rem(16);
-  text-align: center;
-}
-.add-customer{ 
-  color: $white;
-  font-family: Montserrat;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: 16px;
-  text-align: center;
-  border-radius: 3px !important;
-}
-.pyramid-title {  
-  color: $rc-accent-blue;
-  font-family: Montserrat;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  line-height: 16px;
-  margin-top: rem(24);
-  margin-bottom: 0px;
+    $grey4);
 }

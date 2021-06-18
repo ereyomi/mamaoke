@@ -7,6 +7,8 @@
   --app-color-EC6182: #EC6182;
   --app-color-F5F6F8: #F5F6F8;
   --app-color-323141: #323141;
+  --app-color-74728b: #74728b;
+  --app-color-c3c1dd: #c3c1dd;
   // other colors
   --app-color-000000: #000000;
   --app-color-ffffff: #FFFFFF;
@@ -60,10 +62,18 @@
     sans-serif;
 }
 
-
-
+$app-none: none;
+// background color
+$app-disable-bg: var(--app-color-c3c1dd);
+// app outline
+$app-primary-outline: rem(1) solid var(--app-color-323141);
+$app-primary-hover-outline: rem(1) solid var(--app-color-74728b);
+$app-disable-ouline: rem(1) solid var(--app-color-c3c1dd);
+// app hover
+$app-primary-hover: var(--app-color-74728b);
+$app-secondary-hover: var(--app-color-AB96F3);
 // app main colors
-$app-primary: #330066;
+$app-primary: var(--app-color-323141);
 $app-secondary: #9933CC;
 $app-tetiary: #F8F8F8;
 /* app deel dashboard background */
@@ -131,8 +141,7 @@ $spacers: map-merge(("5p": rem(5),
     150: rem(150),
   ),
   $spacers);
-$container-max-widths: (
-  sm: 540px,
+$container-max-widths: (sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1140px,
@@ -249,8 +258,9 @@ $btn-padding-sm-x: 57px;
 $btn-font-size: rem(12);
 $btn-line-height: rem(16);
 $btn-border-radius: rem(3);
+$btn-min-width: rem(200);
 // $btn-primary-bg: linear-gradient(135deg, $green 0%, $dark-green 100%);
-$btn-primary-bg: $rc-primary;
+$btn-primary-bg: var(--app-color-323141);
 $btn-danger-bg: linear-gradient(135deg, $red 0%, $light-red 100%);
 
 // Custom Controls
@@ -347,7 +357,8 @@ $badge-border-radius: rem(2);
 //tooltips
 $tooltip-arrow-color: $grey-4;
 $tooltip-bg: $grey-4;
-$tooltip-font-size: rem(13);$tooltip-border-radius: rem(2);
+$tooltip-font-size: rem(13);
+$tooltip-border-radius: rem(2);
 $tooltip-padding-y: rem(8);
 $tooltip-padding-x: rem(8);
 $tooltip-margin: rem(8);

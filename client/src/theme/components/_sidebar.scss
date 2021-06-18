@@ -1,0 +1,84 @@
+@import "../mixins";
+@import "../variables";
+
+.forUl {
+  list-style: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 0;
+}
+
+.sidebar {
+  top: 0;
+  padding: 0 16px;
+  width: 256px;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+  text-align: left;
+  overflow-y: auto;
+  font-family: var(--app-font-family-montserrat);
+  font-weight: 600;
+  background: red;
+
+  &>ul {
+    @extend .forUl;
+
+    &>li {
+      padding: 0;
+      margin-top: 15px;
+
+      .mainMenu {
+        border-radius: 4px;
+        padding: 6px 16px 6px 0px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all .1s;
+        height: rem(50);
+        border-radius: 15px;
+
+        &.active {
+          background: var(--app-color-F87192);
+
+          .icon-sec {
+            background: var(--app-color-EC6182) !important;
+
+            fa-icon {
+              color: white;
+            }
+          }
+
+          .menu-text {
+            color: white;
+          }
+        }
+
+        .icon-sec {
+          width: rem(50);
+          height: rem(50);
+          color: var(--gray);
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 15px;
+          padding: 10px;
+
+          fa-icon {
+            pointer-events: none !important;
+            width: 20;
+          }
+        }
+
+        .menu-text {
+          color: var(--dark);
+          font-size: rem(14);
+          margin: 0;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+}

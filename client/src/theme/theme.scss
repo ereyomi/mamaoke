@@ -7,9 +7,10 @@
 @import "./components/sizing";
 @import "./components/boxShadow";
 @import "./components/buttons";
+@import "./components/sidebar";
 
 body {
-  background: $app-tetiary !important;
+  background: $app-background !important;
 }
 
 /*

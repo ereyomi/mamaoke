@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<nav class="sidebar">
+  <div class="logo my-60">
+    <img src="assets/svg/logo.svg" alt="" />
+  </div>
+  <ul>
+    <li *ngFor="let item of sideMenu; let i = index">
+      <div
+        class="mainMenu"
+        (click)="openPanel($event, i)"
+        [ngClass]="{ 'active': item?.isActive }"
+      >
+        <div class="icon-sec">
+          <fa-icon [icon]="item.icon" class="icon mr-6"></fa-icon>
+        </div>
+        <p class="menu-text">{{ item?.menu }}</p>
+      </div>
+    </li>
+  </ul>
+</nav>

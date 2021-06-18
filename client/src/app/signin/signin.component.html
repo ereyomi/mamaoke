@@ -1,0 +1,55 @@
+
+<div class="w-100 d-flex flex-column justify-content-center align-items-center px-3">
+
+    <div class="col-12 col-md-5 px-5 py-2 mt-60 mb-20">
+        <div class="w-100">
+            <h2 class="text-center">Log In</h2>
+        </div>
+    </div>
+
+     <div class="col-12 col-md-5 px-5 py-2 mb-20">
+        <div class="w-100">
+            <app-button type="button" color="primary" class="w-100">
+                <fa-icon [icon]="faGoogle" class="icon mr-6"></fa-icon>
+                Log in using Google
+            </app-button>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-5">
+        <div class="w-100 d-flex flex-row justify-content-center align-items-center">
+            <div class="col-5">
+                <div class="line w-100 h-1 medium-grey-2-bg"></div>
+            </div>
+            <div class="col-2 medium-grey-2-color s15-h24 text-center">
+                OR
+            </div>
+            <div class="col-5">
+                <div class="line w-100 h-1 medium-grey-2-bg"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-md-5 box-shadow-a white-bg px-4 py-2 mt-30">
+
+        <div class="w-100">
+
+            <form (ngSubmit)="onSubmit()">
+            <app-inputs [config]="emailConfig" class="my-10"></app-inputs>
+            <app-inputs [config]="passwordConfig" class="my-10"></app-inputs>
+            <div class="my-20 d-flex flex-row justify-content-between align-items-center">
+
+                <app-button type="button" color="primary">
+                    Log in
+                </app-button>
+
+                <app-button type="button" color="tertiary">
+                    forgot password?
+                </app-button>
+
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

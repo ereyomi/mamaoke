@@ -1,0 +1,39 @@
+<ng-container [formGroup]="formGroup">
+
+    <div class="app-form" [ngClass]="class || ''">
+        <div class="form" [ngClass]="{
+                    'form-group-without-prefixIcon': !config?.prefixIcon,
+                    'form-group-without-prefixIcon-error': !config?.prefixIcon?.addIcon && config?.formStatus?.isError,
+                    'form-group-without-prefixIcon-focus': !config?.prefixIcon?.addIcon && config?.formStatus?.isFocus,
+                    'form-group-without-prefixIcon-disabled': !config?.prefixIcon?.addIcon && config?.formStatus?.isDisabled,
+                    'form-group-with-prefixIcon-filled': config?.prefixIcon?.addIcon && config?.formStatus?.isFilled,
+                    'form-group-with-prefixIcon-disabled': config?.prefixIcon?.addIcon && config?.formStatus?.isDisabled,
+                    'form-group-with-prefixIcon': config?.prefixIcon?.addIcon,
+                    'form-group-with-prefixIcon-focus': config?.prefixIcon?.addIcon && config?.formStatus?.isFocus, 
+                    'form-group-with-prefixIcon-error': config?.prefixIcon?.addIcon && config?.formStatus?.isError
+                }">
+            <ng-container *ngIf="config?.prefixIcon?.addIcon">
+                <div class="input-prefixIcon">
+                    <fa-icon [icon]="icon" class="icon"></fa-icon>
+                </div>
+            </ng-container>
+            <input [type]="config?.type" #input formControlName="input" [placeholder]="config?.placeholder"
+                [maxlength]="config?.maxLength || 1000" [minlength]="config?.minLength || 50" [min]="config?.min"
+                [max]="config?.max" [autocomplete]="config?.autoComplete"
+                [autocapitalize]="config?.autoCapitalize !== '' ? config?.autoCapitalize : 'none'"
+                [class]="config?.inputClasses">
+        
+        
+        </div>
+        
+        <label class="rc-grey-color s12-h16 montserrat-regular-font text-weight-normal m-0 ls-0"
+            [class]="config?.inputLabel?.classes">{{ config?.inputLabel?.text }}
+        </label>
+
+
+    </div>
+
+    
+</ng-container>
+
+

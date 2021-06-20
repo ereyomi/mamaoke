@@ -1,6 +1,26 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounce } from 'lodash';
+import {
+  faUserAlt,
+  faWallet,
+  faShoppingBag,
+  faFileInvoiceDollar,
+  faUserFriends,
+  faBell,
+  faHouseUser,
+  faHome,
+  faBookOpen,
+  faNewspaper,
+  faUserCog
+} from '@fortawesome/free-solid-svg-icons';
+
+export interface Menu {
+  menu: string;
+  link: string;
+  isActive: boolean;
+  icon: any;
+}
 
 @Component({
   selector: 'app-navigation',
@@ -19,6 +39,32 @@ export class NavigationComponent implements OnInit {
   smallScreenStatus!: boolean;
   biggerScreenStatus!: boolean;
   homeLink = 'welcome';
+  sideMenu: Menu[] = [
+    {
+      menu: 'Home',
+      link: '',
+      isActive: true,
+      icon: faHouseUser
+    },
+    {
+      menu: 'Menu',
+      link: '',
+      isActive: false,
+      icon: faBookOpen
+    },
+    {
+      menu: 'Article',
+      link: '',
+      isActive: false,
+      icon: faNewspaper
+    },
+    {
+      menu: 'Settings',
+      link: '',
+      isActive: false,
+      icon: faUserCog
+    },
+  ];
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -40,5 +86,12 @@ export class NavigationComponent implements OnInit {
   routeTo(link: string | undefined): void {
     this.router.navigate([link]);
   }
+  activateSideMenu(index: number) {
+    for (let singleMenu of this.sideMenu) {
+      singleMenu.isActive = false;
+    }
+    this.sideMenu[index].isActive = false;
+  }
+
 
 }

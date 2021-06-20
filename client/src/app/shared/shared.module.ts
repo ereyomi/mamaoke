@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppFormsModule } from './forms/app-forms.module';
-import { SidebarModule } from './sidebar/sidebar.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderModule } from './header/header.module';
+import { NavigationModule } from './navigation/navigation.module';
 
 
 
@@ -12,12 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     AppFormsModule,
-    SidebarModule
+    HeaderModule,
+    NavigationModule
   ],
   exports: [
     ReactiveFormsModule,
     AppFormsModule,
-    SidebarModule
+    HeaderModule,
+    NavigationModule
   ]
 })
 export class SharedModule { }

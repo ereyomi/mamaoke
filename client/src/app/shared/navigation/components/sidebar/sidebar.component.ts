@@ -57,24 +57,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  openPanel(event: any, index: any): void {
-    // console.log(this.sideMenu[index]);
-    this.activateSideMenu(index);
-    if (!event.target.classList.contains('mainMenu')) {
-      this.subMenu = event.target.parentElement.nextElementSibling;
-    } else {
-      this.subMenu = event.target.nextElementSibling;
-    }
-
-    if (this.subMenu !== null) {
-      if (this.subMenu.style.maxHeight) {
-        this.subMenu.style.padding = '0';
-        this.subMenu.style.maxHeight = null;
-      } else {
-        this.subMenu.style.maxHeight = this.subMenu.scrollHeight + "px";
-      }
-    }
-  }
   activateSideMenu(index: number) {
     for (let singleMenu of this.sideMenu) {
       singleMenu.isActive = false;

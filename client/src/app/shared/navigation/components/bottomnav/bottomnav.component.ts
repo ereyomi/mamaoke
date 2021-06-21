@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Menu } from '../../navigation.component';
 
 @Component({
   selector: 'app-bottomnav',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BottomnavComponent implements OnInit {
 
+  @Input() sideMenu!: Menu[];
+  @Output() activateMenuEmitter: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+  activateSideMenu(index: number) {
+    this.activateMenuEmitter.emit(index);
   }
 
 }

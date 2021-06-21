@@ -1,4 +1,12 @@
 <ng-container>
-  <h2>Hmmm</h2>
-  <app-sidebar [sideMenu]="sideMenu" (activateMenuEmitter)="activateSideMenu($event)"></app-sidebar>
+  <app-sidebar
+    *ngIf="isBigScreen"
+    [sideMenu]="sideMenu"
+    (activateMenuEmitter)="activateSideMenu($event)"
+  ></app-sidebar>
+  <app-bottomnav
+    *ngIf="isSmallScreen"
+    [sideMenu]="sideMenu"
+    (activateMenuEmitter)="activateSideMenu($event)"
+  ></app-bottomnav>
 </ng-container>

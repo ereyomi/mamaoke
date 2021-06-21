@@ -1,19 +1,29 @@
 @import "../mixins";
 @import "../variables";
+@import "./include";
 
 .dashboard {
   @include flexbox;
   @include flex-direction(row);
   @include align-items(center);
   @include justify-content(flex-start);
-  padding: 20px 20px 20px 0;
+
   height: 100vh;
+
+  @include media(">=desktop") {
+    padding: 20px 20px 20px 0;
+  }
 
   .dashboard-view {
     height: 100%;
     width: 100%;
-    background: white;
-    border-radius: 20px;
+    @include media(">=phone") {
+      background-color: white;
+    }
+
+    @include media(">=desktop") {
+      border-radius: 20px;
+    }
   }
 
 }

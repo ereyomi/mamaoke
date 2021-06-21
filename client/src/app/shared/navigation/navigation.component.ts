@@ -87,10 +87,12 @@ export class NavigationComponent implements OnInit {
     this.router.navigate([link]);
   }
   activateSideMenu(index: number) {
-    for (let singleMenu of this.sideMenu) {
-      singleMenu.isActive = false;
+    if (index) {
+      for (let singleMenu of this.sideMenu) {
+        singleMenu.isActive = false;
+      }
+      this.sideMenu[index-1].isActive = true;
     }
-    this.sideMenu[index].isActive = false;
   }
 
 

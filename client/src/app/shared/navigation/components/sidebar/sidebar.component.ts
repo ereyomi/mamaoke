@@ -7,16 +7,13 @@ import { Menu } from '../../navigation.component';
 })
 export class SidebarComponent implements OnInit {
   @Input() sideMenu!: Menu[];
-  @Output() activateMenuEmitter: EventEmitter<number> = new EventEmitter();
+  @Output() activateMenuEmitter: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
   activateSideMenu(index: number) {
-    for (let singleMenu of this.sideMenu) {
-      singleMenu.isActive = false;
-    }
-    this.sideMenu[index].isActive = false;
+    this.activateMenuEmitter.emit(index);
   }
 
 }

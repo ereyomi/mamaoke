@@ -1,0 +1,19 @@
+@import "../mixins";
+@import "../variables";
+
+.dashboard {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  padding: 20px 20px 20px 0;
+  height: 100vh;
+
+  .dashboard-view {
+    height: 100%;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+  }
+
+}

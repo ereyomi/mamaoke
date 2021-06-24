@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard.routing.module';
+import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    DashboardHeaderComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FontAwesomeModule
   ],
   exports: [
     DashboardComponent

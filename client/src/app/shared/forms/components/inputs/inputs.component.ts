@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, Validators } from '@angular/forms';
 import { InputConfig } from './../../models/input/input-config';
 import { get } from 'lodash';
-import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-inputs',
@@ -21,6 +21,7 @@ export class InputsComponent implements OnInit, ControlValueAccessor {
   icons: any = {
     lock: faLock,
     user: faUser,
+    search: faSearch
   };
 
   @Input() config!: InputConfig;

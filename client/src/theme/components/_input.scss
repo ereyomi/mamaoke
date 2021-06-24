@@ -44,7 +44,7 @@
     width: 100%;
     border: none;
     background: none;
-    border: var(--app-color-AB96F3);
+    border: 1px solid var(--app-color-AB96F3);
     display: block;
 
     @include inputPlaceholder() {
@@ -62,7 +62,7 @@
     }
 
     &:hover {
-      border: $app-primary-outline;
+      border: none;
     }
 
     &:focus {
@@ -115,11 +115,11 @@
   }
 
   &.form-group-with-prefixIcon {
-    border: var(--app-color-AB96F3);
-    border-radius: rem(2);
+    border: 1px solid var(--app-ocean-light);
+    border-radius: rem(10);
 
     &:hover {
-      border: $app-primary-outline;
+      border: 1px solid var(--app-ocean-light);
     }
 
     input {
@@ -147,11 +147,11 @@
     }
 
     &:focus-within {
-      border: $app-primary-outline;
+      border: 1px solid var(--app-ocean-light);
     }
 
     &.form-group-with-prefixIcon-focus {
-      border: $app-primary-outline;
+      border: none;
 
       input {
         color: $black !important;
@@ -196,7 +196,7 @@
 
     &.form-group-with-prefixIcon-disabled {
       pointer-events: none;
-      border: $app-primary-outline;
+      border: 1px solid var(--app-ocean-light);
       background: $app-primary-outline;
 
       input {

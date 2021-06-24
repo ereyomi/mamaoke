@@ -17,6 +17,7 @@
   .dashboard-view {
     height: 100%;
     width: 100%;
+
     @include media(">=phone") {
       background-color: white;
     }
@@ -25,5 +26,12 @@
       border-radius: 20px;
     }
   }
+}
 
+.dash-header {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: rem(20) rem(16);
 }

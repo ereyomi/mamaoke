@@ -4,10 +4,10 @@
       <img src="assets/img/user.png" alt="" />
     </div>
   </div>
-  <div class="search-icon">
+  <div class="search-icon" (click)="toggleSearched()" *ngIf="!isToSearch">
     <fa-icon [icon]="icons.search"></fa-icon>
   </div>
-  <div class="search-input" *ngIf="searchStatus">
+  <div class="search-input" *ngIf="isToSearch">
     <app-inputs [config]="searchConfig"></app-inputs>
   </div>
   <div class="cart-icon">

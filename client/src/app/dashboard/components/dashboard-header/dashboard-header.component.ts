@@ -24,5 +24,11 @@ export class DashboardHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  toggleSearched(): void {
+    this.searchStatus = !this.searchStatus;
+  }
+  get isToSearch(): boolean {
+    return this.searchStatus;
+  }
 
 }

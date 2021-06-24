@@ -33,5 +33,34 @@
   @include flex-direction(row);
   @include align-items(center);
   @include justify-content(space-between);
-  padding: rem(20) rem(16);
+  padding: rem(10) rem(16);
+
+  .user-avatar {
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+
+    .image-holder {
+      width: rem(40);
+      height: rem(40);
+      overflow: hidden;
+
+      img {
+        width: rem(40);
+        height: rem(40);
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  fa-icon {
+    pointer-events: cursor !important;
+
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
 }

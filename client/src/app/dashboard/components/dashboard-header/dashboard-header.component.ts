@@ -16,9 +16,10 @@ import { InputConfig } from 'src/app/shared/forms/models/input/input-config';
 export class DashboardHeaderComponent implements OnInit {
   searchConfig: InputConfig = InputConfigWithPrefix('', 'search', 'Search by food name', 'search');
   icons = {
-    cart: faOpencart,
+    cart: faShoppingCart,
     search: faSearch
   };
+  searchStatus = false;
   constructor() { }
 
   ngOnInit(): void {

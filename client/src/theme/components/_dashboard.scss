@@ -41,6 +41,10 @@
     @include align-items(center);
     @include justify-content(center);
 
+    @include media(">=tablet") {
+      display: none !important;
+    }
+
     .image-holder {
       width: rem(40);
       height: rem(40);

@@ -19,7 +19,7 @@ export class DashboardHeaderComponent implements OnInit {
     cart: faShoppingCart,
     search: faSearch
   };
-  searchStatus = false;
+  searchStatus = true;
   constructor() { }
 
   ngOnInit(): void {

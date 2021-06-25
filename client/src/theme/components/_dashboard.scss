@@ -67,4 +67,35 @@
       height: 20px !important;
     }
   }
+
+  .dash-bg-icon {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    padding: rem(10) rem(15);
+    border-radius: 20%;
+
+    fa-icon {
+      color: white;
+    }
+  }
+
+  .search-icon {
+    background: var(--app-color-74728b);
+  }
+
+  .cart-icon {
+    background: var(--app-color-323141);
+  }
+
+  .dash-name {
+    font-family: Montserrat;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--app-color-323141);
+
+    p {
+      margin: 0 !important;
+    }
+  }
 }

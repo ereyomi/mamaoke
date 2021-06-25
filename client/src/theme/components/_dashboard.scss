@@ -97,5 +97,57 @@
     p {
       margin: 0 !important;
     }
+
+    display: none;
+
+    @include media(">=tablet") {
+      display: initial;
+    }
+  }
+}
+
+.dash-body {
+  padding: rem(10) rem(16);
+
+  .dash-categories {
+    .dash-categories-component {
+      .cat-list-sm {
+        width: 80px;
+        height: 120px;
+        border-radius: 50px;
+        padding: rem(20) rem(10);
+
+        @include media(">=tablet") {
+          width: 100px;
+          height: 150px;
+        }
+
+        background: red;
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        @include justify-content(space-between);
+
+        .cat-icon {
+          .cat-icon-holder {
+            width: rem(40);
+            height: rem(40);
+            overflow: hidden;
+
+            img {
+              width: rem(40);
+              height: rem(40);
+            }
+          }
+        }
+
+        .cat-text {
+          margin: 0 !important;
+          font-size: 0.5rem !important;
+          font-family: Montserrat;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }

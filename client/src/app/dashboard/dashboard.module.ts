@@ -5,13 +5,15 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard.routing.module';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardCategoriesComponent } from './components/dashboard-categories/dashboard-categories.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    DashboardHeaderComponent
+    DashboardHeaderComponent,
+    DashboardCategoriesComponent
   ],
   imports: [
     CommonModule,

@@ -192,14 +192,13 @@
   .dash-products {
     .dash-product-component {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 2rem 1rem;
 
       @include media(">=desktop") {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
 
-      background: green;
 
       .dash-product {
         @include flexbox;
@@ -209,15 +208,23 @@
 
         .dash-product-image {
           .dash-product-image-holder {
-            width: 100%;
+            width: 150px;
             overflow: hidden;
             border-radius: rem(20);
             height: 150px;
 
+            @include media(">=desktop") {
+              width: 250px;
+            }
+
             img {
               height: 150px;
-              width: 100%;
+              width: 150px;
               object-fit: cover;
+
+              @include media(">=desktop") {
+                width: 250px;
+              }
             }
           }
         }

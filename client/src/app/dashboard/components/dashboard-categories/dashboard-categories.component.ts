@@ -6,6 +6,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-categories.component.scss']
 })
 export class DashboardCategoriesComponent implements OnInit {
+  categories = [
+    {
+      name: 'Doughnutt',
+      icon: 'doughnut.svg'
+    },
+    {
+      name: 'Food',
+      icon: 'rice.svg'
+    },
+    {
+      name: 'Soup',
+      icon: 'soup.svg'
+    },
+    {
+      name: 'Soda',
+      icon: 'soda-coke.svg'
+    },
+    {
+      name: 'Hot Drinks',
+      icon: 'hot-drinks-coffee-cup.svg'
+    },
+    {
+      name: 'Hot Drinks',
+      icon: 'hot-drinks-coffee-cup.svg'
+    },
+    {
+      name: 'Hot Drinks',
+      icon: 'hot-drinks-coffee-cup.svg'
+    }
+  ];
 
   constructor() { }
 

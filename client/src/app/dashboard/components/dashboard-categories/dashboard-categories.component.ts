@@ -29,11 +29,11 @@ export class DashboardCategoriesComponent implements OnInit {
     },
     {
       name: 'Hot Drinks',
-      icon: 'hot-drinks-coffee-cup.svg'
+      icon: 'drink-cola-coke.svg'
     },
     {
       name: 'Hot Drinks',
-      icon: 'hot-drinks-coffee-cup.svg'
+      icon: 'drinks-b.svg'
     }
   ];
 

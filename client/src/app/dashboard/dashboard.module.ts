@@ -6,6 +6,7 @@ import { DashboardRoutingModule } from './dashboard.routing.module';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardCategoriesComponent } from './components/dashboard-categories/dashboard-categories.component';
+import { DashboardProductComponent } from './components/dashboard-product/dashboard-product.component';
 
 
 
@@ -13,7 +14,8 @@ import { DashboardCategoriesComponent } from './components/dashboard-categories/
   declarations: [
     DashboardComponent,
     DashboardHeaderComponent,
-    DashboardCategoriesComponent
+    DashboardCategoriesComponent,
+    DashboardProductComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +23,5 @@ import { DashboardCategoriesComponent } from './components/dashboard-categories/
     DashboardRoutingModule,
     FontAwesomeModule
   ],
-  exports: [
-    DashboardComponent
-  ]
 })
 export class DashboardModule { }

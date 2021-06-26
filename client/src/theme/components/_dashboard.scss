@@ -188,4 +188,52 @@
       }
     }
   }
+
+  .dash-products {
+    .dash-product-component {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+      gap: 2rem 1rem;
+
+      @include media(">=desktop") {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      background: green;
+
+      .dash-product {
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        @include justify-content(center);
+
+        .dash-product-image {
+          .dash-product-image-holder {
+            width: 100%;
+            overflow: hidden;
+            border-radius: rem(20);
+            height: 150px;
+
+            img {
+              height: 150px;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .dash-product-short-details {
+          @include flexbox;
+          @include flex-direction(row);
+          @include align-items(center);
+          @include justify-content(center);
+
+          p,
+          span {
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+  }
 }

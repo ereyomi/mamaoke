@@ -133,6 +133,7 @@
         display: none;
         /* Safari and Chrome */
       }
+
       padding: rem(5);
 
       .cat-list-sm {
@@ -163,6 +164,8 @@
         }
 
         .cat-icon {
+          margin-bottom: rem(20);
+
           .cat-icon-holder {
             width: rem(40);
             height: rem(40);
@@ -180,6 +183,7 @@
           font-size: 0.5rem !important;
           font-family: Montserrat;
           font-weight: 600;
+          text-align: center;
         }
       }
     }

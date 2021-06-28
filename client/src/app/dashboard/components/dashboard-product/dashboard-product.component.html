@@ -1,10 +1,9 @@
 <div class="dash-product-component">
+
   <div class="dash-product" *ngFor="let product of products">
     <div class="dash-product-image">
       <div class="dash-product-image-holder">
-        <img [src]="'assets/food/' + product.image"
-        [alt]="product.name"
-        />
+        <img [src]="'assets/food/' + product.image" [alt]="product.name" />
       </div>
     </div>
     <div class="dash-product-short-details">

@@ -107,7 +107,11 @@
 }
 
 .dashboard-view {
-  overflow: scroll;
+  overflow-y: scroll;
+
+  @include media(">tablet") {
+    overflow-y: hidden;
+  }
 }
 
 .dash-body {
@@ -138,7 +142,7 @@
         /* Safari and Chrome */
       }
 
-      padding: rem(5);
+      padding: rem(30) rem(5);
 
       .cat-list-sm {
         width: 80px;
@@ -148,8 +152,9 @@
         margin: 0 rem(5);
 
         @include media(">=tablet") {
+          padding: rem(30) rem(5);
           width: 100px;
-          height: 150px;
+          height: 180px;
         }
 
         background: white;
@@ -175,9 +180,19 @@
             height: rem(40);
             overflow: hidden;
 
+            @include media(">=tablet") {
+              width: rem(50);
+              height: rem(50);
+            }
+
             img {
               width: rem(40);
               height: rem(40);
+
+              @include media(">=tablet") {
+                width: rem(50);
+                height: rem(50);
+              }
             }
           }
         }
@@ -188,20 +203,37 @@
           font-family: Montserrat;
           font-weight: 600;
           text-align: center;
+
+          @include media(">=tablet") {
+            font-size: 0.6rem !important;
+          }
         }
       }
     }
   }
 
   .dash-products {
-    margin-top: rem(20);
 
     .dash-product-component {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 2rem 1rem;
       width: 100%;
-      height: auto;
+      height: 1000px;
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      /* Internet Explorer 10+ */
+      scrollbar-width: none;
+      /* Firefox */
+
+      &::-webkit-scrollbar {
+        width: 0;
+        /* Remove scrollbar space */
+        background: transparent;
+        /* Optional: just make scrollbar invisible */
+        display: none;
+        /* Safari and Chrome */
+      }
 
       @include media(">=desktop") {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

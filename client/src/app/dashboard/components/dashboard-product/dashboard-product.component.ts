@@ -42,107 +42,12 @@ export class DashboardProductComponent implements OnInit {
       name: 'Pepper soup b',
       image: 'pepper-soup.jpg'
     },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg'
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg'
-    }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products);
   }
 
 }

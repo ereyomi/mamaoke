@@ -148,7 +148,7 @@
 
 .dash-products {
   padding-top: rem(20);
-  padding-bottom: rem(20);
+  padding-bottom: rem(5);
 
   /* @include media(">=tablet") {
     padding-top: rem(320);
@@ -202,13 +202,20 @@
 
     .dash-product-short-details {
       @include flexbox;
-      @include flex-direction(row);
+      @include flex-direction(column);
       @include align-items(center);
       @include justify-content(center);
 
       p,
       span {
-        margin: 0 !important;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+
+      p {
+        &:first-child {
+          margin-top: rem(10);
+        }
       }
     }
   }

@@ -12,7 +12,6 @@
   @include media(">=desktop") {
     padding: 20px 20px 20px 0;
   }
-
 }
 
 .dash-header {
@@ -27,6 +26,7 @@
     @include flex-direction(column);
     @include align-items(center);
     @include justify-content(center);
+    padding: 0 5px;
 
     @include media(">=tablet") {
       display: none !important;
@@ -55,24 +55,47 @@
     }
   }
 
-  .dash-bg-icon {
-    @include flexbox;
-    @include align-items(center);
-    @include justify-content(center);
-    padding: rem(10) rem(15);
-    border-radius: 20%;
+  .cart-icon {
+    position: relative;
+    padding-left: 5px;
 
-    fa-icon {
+    .dash-bg-icon {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+      padding: rem(8) rem(10);
+      border-radius: 20%;
+      background: var(--app-color-323141);
+      position: relative;
+
+      fa-icon {
+        color: white;
+      }
+    }
+
+    .cart-icon-number {
+      position: absolute;
+      z-index: 10;
+      width: rem(20);
+      height: rem(20);
+      border-radius: 50%;
+      background: red;
       color: white;
+      top: -5px;
+      right: -5px;
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+
+      span {
+        margin: 0;
+        font-size: 0.8rem;
+      }
     }
   }
 
   .search-icon {
     background: var(--app-color-74728b);
-  }
-
-  .cart-icon {
-    background: var(--app-color-323141);
   }
 
   .dash-name {

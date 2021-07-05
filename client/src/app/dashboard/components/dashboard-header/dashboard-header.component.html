@@ -15,7 +15,12 @@
   <div class="search-input" *ngIf="isToSearch">
     <app-inputs [config]="searchConfig"></app-inputs>
   </div>
-  <div class="cart-icon dash-bg-icon">
-    <fa-icon [icon]="icons.cart"></fa-icon>
+  <div class="cart-icon">
+    <div class="dash-bg-icon">
+      <fa-icon [icon]="icons.cart"></fa-icon>
+    </div>
+    <div class="cart-icon-number">
+      <span>20</span>
+    </div>
   </div>
 </div>

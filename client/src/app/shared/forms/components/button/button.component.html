@@ -1,0 +1,16 @@
+<ng-container *ngIf="type !== 'link'">
+    <button [class]="btnClass" [type]='type' [disabled]="isDisabled">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </button>
+</ng-container>
+
+<ng-container *ngIf="type === 'link'">
+    <a class="btn-no-padding btn-tertiary" [ngClass]="{'disabled': isDisabled}" [class]="class">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </a>
+</ng-container>
+
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>
+

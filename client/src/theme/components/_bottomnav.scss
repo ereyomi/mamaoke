@@ -1,0 +1,69 @@
+@import "../mixins";
+@import "../variables";
+@import "./sidebar";
+
+.bottomnav {
+  bottom: 0;
+  padding: 0 16px;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  font-family: var(--app-font-family-montserrat);
+  font-weight: 600;
+  background-color: white;
+
+  &>ul {
+    @extend .forUl;
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-between);
+    padding: 6px;
+
+    &>li {
+      padding: 0;
+
+      .mainMenu {
+        border-radius: 4px;
+        padding: 6px;
+        /* remove this latter */
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        cursor: pointer;
+        transition: all .1s;
+        height: rem(50);
+        border-radius: 15px;
+
+        &.active {
+          background: var(--app-color-F87192);
+
+          .icon-sec {
+            background: var(--app-color-EC6182) !important;
+
+            fa-icon {
+              color: white;
+            }
+          }
+        }
+
+        .icon-sec {
+          width: rem(50);
+          height: rem(50);
+          color: var(--app-color-323141);
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 15px;
+          padding: 10px;
+
+          fa-icon {
+            pointer-events: none !important;
+            width: 20;
+          }
+        }
+      }
+    }
+  }
+}

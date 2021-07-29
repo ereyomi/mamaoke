@@ -1,0 +1,121 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "./variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@function rem($pixels, $context: $baseFontSizePx) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-container-max-widths-important(
+  $max-widths: $container-max-widths,
+  $breakpoints: $grid-breakpoints
+) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    .col#{$infix}-reset-width {
+      @include media-breakpoint-up($breakpoint, $breakpoints) {
+        max-width: $container-max-width !important;
+      }
+    }
+  }
+}
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-row-grid($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in $breakpoints {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    .row#{$infix}-enable {
+      @include make-row();
+    }
+  }
+}
+
+// Flexbox.
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+// grid
+@mixin display-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+@mixin flex-direction($direction: row) {
+  -webkit-box-orient: $direction;
+  -webkit-box-direction: $direction;
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap: nowrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify: flex-start) {
+  -webkit-box-pack: $justify;
+  -webkit-justify-content: $justify;
+  -ms-justify-content: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+}
+
+@mixin align-items($align: stretch) {
+  -webkit-align-items: $align;
+  -ms-align-items: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+// placeholder mixin
+@mixin inputPlaceholder() {
+    $selector: '';
+    $prefixes: (
+        moz: "::-moz",
+        webkit: "::-webkit",
+        ie: ":-ms"
+    );
+    @each $prop, $value in $prefixes {
+        @if $prop != "moz" {
+            $selector: #{$value}-input-placeholder;
+        } @else {
+            $selector: #{$value}-placeholder;
+        }
+        @if & {
+            &#{$selector} {
+                @content;
+            }
+        } @else {
+            #{$selector} {
+                @content;
+            }
+        }
+    }
+    &::placeholder {
+      @content;
+    }
+}
+
+// transform
+
+@mixin transform-translate-X($val) {
+  -webkit-transform: translateX(rem($val));
+  -ms-transform: translateX(rem($val));
+  transform: translateX(rem($val));
+}

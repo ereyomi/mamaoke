@@ -1,0 +1,6 @@
+@import "../mixins";
+@import "../variables";
+
+.box-shadow-a {
+    box-shadow: $app-box-shadow-a;
+}

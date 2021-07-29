@@ -1,0 +1,346 @@
+@import "../mixins";
+@import "../variables";
+@import "./include";
+
+.dashboard {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  height: 100vh;
+
+  @include media(">=desktop") {
+    padding: 20px 20px 20px 0;
+  }
+}
+
+.dashboard-view {
+  height: 100%;
+  width: auto;
+  /*  */
+  -ms-flex: 0 0 auto;
+  flex: 1;
+  /* flex: 0 0 auto; */
+  max-width: 100%;
+  /*  */
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  @include media(">=phone") {
+    background: white;
+  }
+
+  @include media(">=desktop") {
+    border-radius: 20px;
+  }
+
+  padding-bottom: 100px !important;
+  /* overflow-y: scroll !important;
+  overflow-x: hidden !important; */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+    display: none;
+    /* Safari and Chrome */
+  }
+}
+
+.dashboard-view-header {
+  width: 100%;
+  height: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: white;
+}
+
+.dash-header {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: rem(10) rem(16);
+
+  @include media(">=tablet") {
+    padding: rem(30) rem(40) rem(10) rem(40);
+  }
+
+  .user-avatar {
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 0 5px;
+
+    @include media(">=tablet") {
+      display: none !important;
+    }
+
+    .image-holder {
+      width: rem(40);
+      height: rem(40);
+      overflow: hidden;
+
+      img {
+        width: rem(40);
+        height: rem(40);
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  fa-icon {
+    pointer-events: cursor !important;
+
+    svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+
+  .cart-icon {
+    position: relative;
+    padding-left: 5px;
+
+    .dash-bg-icon {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+      padding: rem(8) rem(10);
+      border-radius: 20%;
+      background: var(--app-color-323141);
+      position: relative;
+
+      fa-icon {
+        color: white;
+      }
+    }
+
+    .cart-icon-number {
+      position: absolute;
+      z-index: 10;
+      width: rem(20);
+      height: rem(20);
+      border-radius: 50%;
+      background: red;
+      color: white;
+      top: -5px;
+      right: -5px;
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+
+      span {
+        margin: 0;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .search-icon {
+    background: var(--app-color-74728b);
+  }
+
+  .dash-name {
+    font-family: Montserrat;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--app-color-323141);
+
+    p {
+      margin: 0 !important;
+    }
+
+    display: none;
+
+    @include media(">=tablet") {
+      display: initial;
+    }
+  }
+}
+
+.dash-body {
+  padding: rem(10) rem(16);
+  overflow: hidden !important;
+}
+
+.dash-products {
+  padding-top: rem(20);
+  padding-bottom: rem(5);
+
+  /* @include media(">=tablet") {
+    padding-top: rem(320);
+  } */
+}
+
+.dash-product-component {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem 1rem;
+  width: 100%;
+  height: auto;
+
+  @include media(">=desktop") {
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+
+
+  .dash-product {
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+
+    .dash-product-image {
+
+      .dash-product-image-holder {
+        width: 120px;
+        overflow: hidden;
+        border-radius: rem(20);
+        height: 120px;
+
+
+        @include media(">=desktop") {
+          width: 250px;
+        }
+
+        img {
+          height: 120px;
+          width: 120px;
+          object-fit: cover;
+
+          @include media(">=desktop") {
+            width: 250px;
+          }
+        }
+      }
+    }
+
+    .dash-product-short-details {
+      @include flexbox;
+      @include flex-direction(column);
+      @include align-items(center);
+      @include justify-content(center);
+
+      p,
+      span {
+        font-size: 0.8rem;
+        margin: 0;
+      }
+
+      p {
+        &:first-child {
+          margin-top: rem(10);
+        }
+      }
+    }
+  }
+}
+
+.dash-categories-component {
+  width: 100%;
+  height: auto;
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  flex-shrink: 0;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+    display: none;
+    /* Safari and Chrome */
+  }
+
+  padding: rem(30) rem(5);
+
+  @include media(">=tablet") {
+    padding: rem(30) rem(40);
+  }
+
+  .cat-list-sm {
+    width: 80px;
+    height: 120px;
+    border-radius: 50px;
+    padding: rem(20) rem(10);
+    margin: 0 rem(5);
+
+    @include media(">=tablet") {
+      padding: rem(30) rem(5);
+      width: 100px;
+      height: 180px;
+    }
+
+    background: white;
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(space-between);
+
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .cat-icon {
+      margin-bottom: rem(20);
+
+      .cat-icon-holder {
+        width: rem(40);
+        height: rem(40);
+        overflow: hidden;
+
+        @include media(">=tablet") {
+          width: rem(50);
+          height: rem(50);
+        }
+
+        img {
+          width: rem(40);
+          height: rem(40);
+
+          @include media(">=tablet") {
+            width: rem(50);
+            height: rem(50);
+          }
+        }
+      }
+    }
+
+    .cat-text {
+      margin: 0 !important;
+      font-size: 0.5rem !important;
+      font-family: Montserrat;
+      font-weight: 600;
+      text-align: center;
+
+      @include media(">=tablet") {
+        font-size: 0.6rem !important;
+      }
+    }
+  }
+}

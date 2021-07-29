@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <div class="auth-display">
+    <div class="image-holder">
+      <img src="assets/img/user.png" alt="" />
+    </div>
+    <p>Chapele Tega</p>
+  </div>
+  <ul>
+    <li *ngFor="let item of sideMenu; let i = index">
+      <div
+        class="mainMenu"
+        (click)="activateSideMenu(i+1)"
+        [ngClass]="{ 'active': item?.isActive }"
+      >
+        <div class="icon-sec">
+          <fa-icon [icon]="item.icon" class="icon mr-6"></fa-icon>
+        </div>
+        <p class="menu-text">{{ item?.menu }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,18 @@
+@import "../variables";
+@import "../mixins";
+
+.icon-20 {
+    width: rem(20);
+    height: rem(20);
+}
+.image-50 {
+    width: rem(50);
+}
+.logoDiv {
+    div {
+        width: rem(50);
+        img {
+            width: 100%
+        }
+    }
+}

@@ -1,0 +1,177 @@
+@import "../variables";
+@import "../mixins";
+
+$btn-font-family: $font-family-base;
+$btn-primary-color: $white;
+$def-box-shadow: rgba(0, 0, 0, 0.15);
+$btn-padding-y-zero: 0;
+$btn-padding-x-zero: 0;
+
+@mixin button-style($background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $hover-bg,
+  $hover-border,
+  $hover-color,
+  $hover-shadow,
+  $disabled-bg,
+  $disabled-border,
+  $disabled-color) {
+  color: $color;
+  background: $background;
+  border: $border;
+  box-shadow: none !important;
+
+  &:focus,
+  &.focus {
+    outline: 0 !important;
+    box-shadow: 0 rem(2) rem(8) 0 $hover-shadow;
+    background: $hover-bg !important;
+    border: $hover-border !important;
+    color: $hover-color;
+  }
+
+  &:hover,
+  &.hover {
+    background: $hover-bg !important;
+    border: $hover-border !important;
+    color: $hover-color;
+    box-shadow: 0 rem(2) rem(8) 0 $hover-shadow;
+
+    @if $background=='none'and $border=='none' {
+      text-decoration: underline;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    background: $disabled-bg !important;
+    border: $disabled-border !important;
+    color: $disabled-color !important;
+    opacity: 1;
+    text-decoration: $app-none;
+    pointer-events: none;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show>&.dropdown-toggle {
+    color: $active-color;
+    background: $active-background;
+    border: $active-border;
+  }
+}
+
+@mixin button-size($padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+.btn {
+  font-family: var(--app-font-family-montserrat);
+  font-weight: normal;
+  min-width: $btn-min-width;
+  @include button-size($btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size,
+    $btn-line-height,
+    $btn-border-radius);
+}
+
+.btn-no-padding {
+  font-family: var(--app-font-family-montserrat);
+  font-weight: normal;
+  min-width: $btn-min-width;
+  @include button-size($btn-padding-y-zero,
+    $btn-padding-x-zero,
+    $btn-font-size,
+    $btn-line-height,
+    $btn-border-radius);
+  cursor: pointer;
+}
+
+// @mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+
+.btn-primary {
+  @include button-style($btn-primary-bg,
+    $app-primary-outline,
+    $white,
+    $btn-primary-bg,
+    $btn-primary-bg,
+    $white,
+    $app-primary-hover,
+    $app-primary-hover-outline,
+    $white,
+    $def-box-shadow,
+    $app-disable-bg,
+    $app-disable-ouline,
+    $white,
+  );
+  // &:not(:active):not(:hover):not(:focus) {
+  //   background: $btn-primary-bg;
+  //   background: $green;
+  // }
+}
+
+.btn-secondary-b {
+  $def-shadow: transparent;
+  @include button-style($white,
+    $app-primary-outline,
+    $black,
+    $white,
+    $app-primary-outline,
+    $app-primary,
+    $app-secondary-hover,
+    $app-primary-outline,
+    $app-primary,
+    $def-shadow,
+    $white,
+    $app-disable-ouline,
+    $app-disable-bg);
+  background-image: none;
+}
+
+.btn-tertiary {
+  $def-shadow: transparent;
+  @include button-style($app-none,
+    $app-none,
+    $app-primary,
+    $app-none,
+    $app-none,
+    $app-primary,
+    $app-none,
+    $app-none,
+    $app-primary,
+    $def-shadow,
+    $app-none,
+    $app-none,
+    $app-primary);
+  font-weight: 500;
+  background-image: none;
+}
+
+.btn-danger {
+  $def-shadow: transparent;
+  @include button-style($btn-danger-bg,
+    $red,
+    $white,
+    $light-red,
+    $light-red,
+    $white,
+    $light-red,
+    $light-red,
+    $white,
+    $def-box-shadow,
+    $medium-green-2,
+    $medium-green-2,
+    $grey4);
+}

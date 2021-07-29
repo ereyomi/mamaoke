@@ -1,0 +1,228 @@
+@import "../mixins";
+@import "../variables";
+
+
+.app-form {
+  @include flexbox;
+  @include flex-direction(column-reverse);
+  width: 100%;
+  @include align-items(flex-start);
+}
+
+.form {
+  @include flexbox;
+  width: 100%;
+  @include justify-content(flex-start);
+  @include align-items(stretch);
+  @include flex-wrap(wrap);
+
+  >.input-prefixIcon {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    padding: rem(8) rem(16) rem(8) rem(16);
+
+    .icon {
+      font-family: var(--app-font-family-montserrat);
+      font-size: rem(14) !important;
+      line-height: rem(16) !important;
+      color: $app-grey;
+    }
+  }
+
+  input {
+    font-family: var(--app-font-family-montserrat);
+    font-weight: normal;
+    font-style: normal;
+    color: $black;
+    font-size: rem(14) !important;
+    line-height: rem(16) !important;
+    padding: rem(8) rem(16);
+    border-radius: rem(2);
+    letter-spacing: 0;
+    width: 100%;
+    border: none;
+    background: none;
+    border: 1px solid var(--app-color-AB96F3);
+    display: block;
+
+    @include inputPlaceholder() {
+      color: $app-grey;
+      opacity: 1;
+    }
+
+    &.input-error,
+    &:invalid {
+      border: $red;
+
+      @include inputPlaceholder() {
+        color: $red;
+      }
+    }
+
+    &:hover {
+      border: none;
+    }
+
+    &:focus {
+      color: $black !important;
+      border: $app-primary-outline;
+
+      @include inputPlaceholder() {
+        opacity: 0;
+      }
+    }
+
+  }
+
+  &.form-group-without-prefixIcon {
+    &.form-group-without-prefixIcon-focus {
+      input {
+        color: $black !important;
+        border: $app-primary-outline !important;
+
+        @include inputPlaceholder() {
+          color: $black !important;
+        }
+      }
+    }
+
+    &.form-group-without-prefixIcon-error {
+      input {
+        color: $red !important;
+        border: $red !important;
+
+        @include inputPlaceholder() {
+          color: $red !important;
+        }
+      }
+    }
+
+    &.form-group-without-prefixIcon-disabled {
+      pointer-events: none;
+
+      input {
+        border: $app-primary-outline;
+        background: $app-primary-outline;
+        color: $app-primary-outline;
+
+        @include inputPlaceholder() {
+          color: $app-primary-outline;
+        }
+      }
+    }
+  }
+
+  &.form-group-with-prefixIcon {
+    border: 1px solid var(--app-ocean-light);
+    border-radius: rem(10);
+
+    &:hover {
+      border: 1px solid var(--app-ocean-light);
+    }
+
+    input {
+      padding: rem(8) rem(12) rem(8) 0;
+      border: none !important;
+      position: relative;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      width: 1%;
+      outline: none !important;
+
+      &:focus {
+        border: none;
+
+        &+.input-prefixIcon {
+          .input-prefixIcon {
+            color: $black !important;
+          }
+        }
+      }
+
+      &:hover {
+        border: none;
+      }
+    }
+
+    &:focus-within {
+      border: 1px solid var(--app-ocean-light);
+    }
+
+    &.form-group-with-prefixIcon-focus {
+      border: none;
+
+      input {
+        color: $black !important;
+
+        @include inputPlaceholder() {
+          color: $black !important;
+        }
+      }
+
+      >.input-prefixIcon {
+        .icon {
+          color: $black !important;
+        }
+      }
+    }
+
+    &.form-group-with-prefixIcon-error {
+      border: $red;
+
+      input {
+        color: $red !important;
+
+        @include inputPlaceholder() {
+          color: $red;
+        }
+      }
+
+      >.input-prefixIcon {
+        .icon {
+          color: $red;
+        }
+      }
+    }
+
+    &.form-group-with-prefixIcon-filled {
+      >.input-prefixIcon {
+        .icon {
+          color: $black !important;
+        }
+      }
+    }
+
+    &.form-group-with-prefixIcon-disabled {
+      pointer-events: none;
+      border: 1px solid var(--app-ocean-light);
+      background: $app-primary-outline;
+
+      input {
+        color: $app-primary-outline;
+
+        @include inputPlaceholder() {
+          color: $app-primary-outline;
+        }
+      }
+
+      >.input-prefixIcon {
+        .icon {
+          color: $app-primary-outline;
+        }
+      }
+    }
+  }
+
+  &+label {
+    opacity: 0;
+    transition: all .3s ease-in-out .15s;
+  }
+
+  &:focus-within {
+    &+label {
+      opacity: 1;
+    }
+  }
+}

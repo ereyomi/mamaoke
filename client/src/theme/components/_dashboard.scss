@@ -14,12 +14,64 @@
   }
 }
 
+.dashboard-view {
+  height: 100%;
+  width: auto;
+  /*  */
+  -ms-flex: 0 0 auto;
+  flex: 1;
+  /* flex: 0 0 auto; */
+  max-width: 100%;
+  /*  */
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  @include media(">=phone") {
+    background: white;
+  }
+
+  @include media(">=desktop") {
+    border-radius: 20px;
+  }
+
+  padding-bottom: 100px !important;
+  /* overflow-y: scroll !important;
+  overflow-x: hidden !important; */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+    display: none;
+    /* Safari and Chrome */
+  }
+}
+
+.dashboard-view-header {
+  width: 100%;
+  height: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: white;
+}
+
 .dash-header {
   @include flexbox;
   @include flex-direction(row);
   @include align-items(center);
   @include justify-content(space-between);
   padding: rem(10) rem(16);
+
+  @include media(">=tablet") {
+    padding: rem(30) rem(40) rem(10) rem(40);
+  }
 
   .user-avatar {
     @include flexbox;
@@ -114,54 +166,6 @@
       display: initial;
     }
   }
-}
-
-.dashboard-view {
-  height: 100%;
-  width: auto;
-  /*  */
-  -ms-flex: 0 0 auto;
-  flex: 1;
-  /* flex: 0 0 auto; */
-  max-width: 100%;
-  /*  */
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: scroll;
-
-  @include media(">=phone") {
-    background: white;
-  }
-
-  @include media(">=desktop") {
-    border-radius: 20px;
-  }
-
-  padding-bottom: 100px !important;
-  /* overflow-y: scroll !important;
-  overflow-x: hidden !important; */
-  -ms-overflow-style: none;
-  /* Internet Explorer 10+ */
-  scrollbar-width: none;
-  /* Firefox */
-
-  &::-webkit-scrollbar {
-    width: 0;
-    /* Remove scrollbar space */
-    background: transparent;
-    /* Optional: just make scrollbar invisible */
-    display: none;
-    /* Safari and Chrome */
-  }
-}
-
-.dashboard-view-header {
-  width: 100%;
-  height: auto;
-  position: sticky;
-  top: 0;
-  left: 0;
-  background: white;
 }
 
 .dash-body {
@@ -269,6 +273,10 @@
   }
 
   padding: rem(30) rem(5);
+
+  @include media(">=tablet") {
+    padding: rem(30) rem(40);
+  }
 
   .cat-list-sm {
     width: 80px;

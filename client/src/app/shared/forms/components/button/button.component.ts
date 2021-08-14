@@ -13,10 +13,10 @@ export class ButtonComponent implements OnInit {
   @Input() disabled!: boolean;
 
   btnClasses: any = {
-    primary: 'btn btn-primary',
-    secondary: 'btn btn-secondary',
-    secondaryB: 'btn btn-secondary-b',
-    tertiary: 'btn-no-padding btn-tertiary',
+    primary: ' btn btn-primary ',
+    secondary: ' btn btn-secondary ',
+    secondaryB: ' btn btn-secondary-b ',
+    tertiary: ' btn-no-padding btn-tertiary ',
   };
   constructor(private cdRef: ChangeDetectorRef) { }
 

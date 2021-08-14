@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-dashboard-product',
@@ -49,14 +50,18 @@ export class DashboardProductComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private pS: ProductsService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   formatPrice = (price: number): string => {
     return new Intl.NumberFormat('en-Us', {
       style: 'currency',
       currency: 'NGN',
     }).format(price);
+  };
+  cart(): void {
+    console.log('clicked');
+    this.pS.openProductModal();
   }
 
 }

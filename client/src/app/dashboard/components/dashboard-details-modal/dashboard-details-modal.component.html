@@ -1,0 +1,54 @@
+<div class="app-modal-overlay" (click)="closeModal()" [ngStyle]="{'display': isDisplay ? 'flex': 'none'}">
+    <div class="app-modal-body" (click)="stopModalPropagation($event)">
+        <div class="app-modal-header">
+            <div class="modal-name">
+                {{ name }}
+            </div>
+            <div class="modal-close-icon" (click)="closeModal()">
+                <img src="assets/svg/close-icon.svg" alt="">
+            </div>
+        </div>
+        <div class="modal-desc">
+            <div class="modal-img">
+                <img src="assets/food/egusi-soup.jpg" alt="egusi-soup.jpg">
+            </div>
+           <div>
+               <h2 class="modal-name-b">
+                    {{ name }}
+                </h2>
+                <p class="modal-desc-text">
+                It is a long established fact that a reader will be
+                distracted by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less normal
+                distribution of letters, as opposed to using 'Content here, content here',
+                making it look like readable English. Many desktop publishing packages and
+                web page editors now use Lorem Ipsum as their default model text, and a search
+                for 'lorem ipsum' will uncover many web sites still in their infancy.
+                Various versions have evolved over the years, sometimes by accident,
+                sometimes on purpose (injected humour and the like).
+                </p>
+                <div class="modal-buttons">
+                    <div class="my-3" [formGroup]="componentForm">
+                        <app-inputs-type-b type="quantity" formControlName="quantity"></app-inputs-type-b>
+                    </div>
+
+                    <div class="my-32 modal-buttons-group">
+
+                      <div class="btn-div">
+                        <app-button (click)="openBag()" color="primary" type="button">
+                            Add to cart
+                        </app-button>
+                      </div>
+
+                      <div class="btn-div">
+                        <app-button color="secondary">
+                            <span class="app-primary-color">Cancel</span>
+                        </app-button>
+                      </div>
+
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>

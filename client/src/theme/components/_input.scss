@@ -226,3 +226,111 @@
     }
   }
 }
+
+/* type-b */
+
+.quantity {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  border: 1px solid #DFE0EB;
+  padding: 0 rem(10);
+  border-radius: rem(20);
+  caret-color: transparent;
+  height: rem(40);
+  width: rem(100);
+  overflow: hidden;
+
+  input {
+    width: rem(40);
+    height: rem(40);
+    border: none;
+    outline: none;
+    margin: 0 rem(5);
+    text-align: center;
+    caret-color: transparent;
+
+  }
+
+  button {
+    border: none;
+    background: none;
+    width: rem(20);
+    height: rem(40);
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+
+    img {
+      width: rem(12);
+      height: rem(12);
+
+      svg {
+        object-fit: contain;
+        fill: currentColor;
+      }
+    }
+  }
+
+}
+
+// fix for number type arrow
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input {
+  input {
+    font-family: 'Raleway';
+    color: $black;
+    font-size: rem(14) !important;
+    line-height: rem(16) !important;
+    padding: rem(8) rem(12);
+    border-radius: rem(6);
+    letter-spacing: 0;
+    width: 100%;
+    border: none;
+    background: none;
+    border: 1px solid #e7e7e7;
+    display: block;
+    transition: all 0.5s ease-in-out;
+    outline: none;
+
+    @include inputPlaceholder() {
+      color: #e7e7e7;
+      opacity: 1;
+    }
+
+    &:invalid {
+      border: 1px solid $red;
+
+      @include inputPlaceholder() {
+        color: $red;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $medium-grey-2;
+    }
+
+    &:focus {
+      color: $medium-grey;
+      border: 1px solid $medium-grey;
+    }
+
+  }
+}

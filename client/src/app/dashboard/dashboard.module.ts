@@ -7,6 +7,8 @@ import { DashboardHeaderComponent } from './components/dashboard-header/dashboar
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardCategoriesComponent } from './components/dashboard-categories/dashboard-categories.component';
 import { DashboardProductComponent } from './components/dashboard-product/dashboard-product.component';
+import { DashboardDetailsModalComponent } from './components/dashboard-details-modal/dashboard-details-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,13 +17,15 @@ import { DashboardProductComponent } from './components/dashboard-product/dashbo
     DashboardComponent,
     DashboardHeaderComponent,
     DashboardCategoriesComponent,
-    DashboardProductComponent
+    DashboardProductComponent,
+    DashboardDetailsModalComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     DashboardRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
 })
 export class DashboardModule { }

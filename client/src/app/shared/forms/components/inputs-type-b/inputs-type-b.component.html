@@ -1,0 +1,29 @@
+<ng-container [formGroup]="componentFormGroup">
+
+    <div class="quantity" *ngIf="type === 'quantity'">
+
+        <button (click)="decrement($event)">
+            <img src="assets/svg/minus-icon.svg" alt="minus-icon">
+        </button>
+
+        <input type="number" min="0" formControlName="input" value="0">
+
+         <button (click)="increment($event)">
+            <img src="assets/svg/plus-icon.svg" alt="minus-icon">
+        </button>
+
+    </div>
+
+    <div class="input" *ngIf="type === 'input'">
+       <input
+            [type]="config?.type"
+            #input
+            formControlName="input"
+            [placeholder]="config?.placeholder"
+            [autocomplete]="config?.autoComplete"
+            [autocapitalize]="config?.autoCapitalize !== '' ? config?.autoCapitalize : 'none'"
+            [class]="config?.inputClasses"
+        >
+    </div>
+
+</ng-container>

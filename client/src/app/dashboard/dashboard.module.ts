@@ -9,6 +9,7 @@ import { DashboardCategoriesComponent } from './components/dashboard-categories/
 import { DashboardProductComponent } from './components/dashboard-product/dashboard-product.component';
 import { DashboardDetailsModalComponent } from './components/dashboard-details-modal/dashboard-details-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardHeaderComponent,
     DashboardCategoriesComponent,
     DashboardProductComponent,
-    DashboardDetailsModalComponent
+    DashboardDetailsModalComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

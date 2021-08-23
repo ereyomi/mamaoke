@@ -12,7 +12,16 @@
 @import "./components/custom-header";
 @import "./components/dashboard";
 @import "./components/modal";
+@import "./components/cart";
 
 body {
   background: $app-background !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mr-16 {
+  margin-right: 16px !important;
 }

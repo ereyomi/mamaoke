@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   faShoppingCart,
   faSearch
@@ -7,6 +7,7 @@ import {
 import { faOpencart } from '@fortawesome/free-brands-svg-icons';
 import { InputConfigWithPrefix } from 'src/app/shared/forms/config/input/input-config-with-prefix';
 import { InputConfig } from 'src/app/shared/forms/models/input/input-config';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -29,7 +30,7 @@ export class DashboardHeaderComponent implements OnInit {
     search: faSearch
   };
   searchStatus = true;
-  constructor(private eRef: ElementRef) { }
+  constructor(private eRef: ElementRef, private pS: ProductsService) { }
 
   ngOnInit(): void { }
   toggleSearched(): void {
@@ -47,6 +48,9 @@ export class DashboardHeaderComponent implements OnInit {
     if (event.target.localName !== 'div') {
       this.toggleSearched();
     }
+  }
+  openModal(): void {
+    this.pS.openBagModal();
   }
 
 }

@@ -15,7 +15,7 @@
   <div class="search-input" *ngIf="isToSearch">
     <app-inputs [config]="searchConfig"></app-inputs>
   </div>
-  <div class="cart-icon">
+  <div class="cart-icon" (click)="openModal()">
     <div class="dash-bg-icon">
       <fa-icon [icon]="icons.cart"></fa-icon>
     </div>

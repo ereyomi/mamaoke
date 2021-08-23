@@ -1,0 +1,86 @@
+@import "../variables";
+@import "../mixins";
+
+.app-bag-overlay {
+  @extend .app-overlay;
+  @include flexbox;
+}
+
+.bag-view {
+  width: 100%;
+  height: 100vh;
+  background: $white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(space-between);
+  position: fixed;
+  top: 0;
+
+  .bag-header,
+  .bag-footer {
+    @include flexbox;
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    @include align-items(center);
+    padding: rem(25);
+
+    fa-icon {
+      pointer-events: cursor !important;
+
+      color: var(--app-color-323141);
+
+      svg {
+        width: 25px !important;
+        height: 25px !important;
+      }
+    }
+  }
+
+  .bag-header {
+    .bag-section {
+      @include flexbox;
+      @include flex-direction(row);
+      @include justify-content(center);
+      @include align-items(center);
+    }
+
+  }
+
+  .bag-contents {
+    padding: 0 rem(25) 0 rem(25);
+    @include flexbox;
+    @include flex-direction(column);
+
+    .bag-content {
+      width: 100%;
+      @include flexbox;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(space-between);
+      margin-bottom: rem(10);
+
+      &>div {
+        @include flexbox;
+        @include flex-direction(row);
+        @include align-items(center);
+      }
+
+      .bag-product-img {
+        width: rem(60);
+        height: rem(60);
+        border-radius: rem(6);
+        overflow: hidden;
+        margin-right: rem(10);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bag-view {
+    max-width: rem(550);
+    right: 0;
+  }
+}

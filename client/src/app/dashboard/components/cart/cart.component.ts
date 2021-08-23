@@ -40,6 +40,7 @@ export class CartComponent implements OnInit {
   }
   closeModal(): void {
     this.pS.closeBagModal();
+    this.switchIt = 'bag';
   }
   stopModalPropagation(event: Event): void {
     event.stopPropagation();

@@ -226,7 +226,7 @@
         <app-button color="secondary" (click)="switchBagView('bagFormA')">
             Back
         </app-button>
-        <app-button (click)="closeModal()">
+        <app-button (click)="switchBagView('continueToPayment')">
             continue to payment
         </app-button>
     </div>
@@ -235,5 +235,15 @@
 
 
 <ng-template #continueToPayment>
-    <app-card></app-card>
+   <div class="center-flex">
+      <app-card></app-card>
+   </div>
+    <div class="bag-footer">
+        <app-button color="secondary" (click)="switchBagView('bagReview')">
+            Back
+        </app-button>
+        <app-button (click)="closeModal()">
+            Done
+        </app-button>
+    </div>
 </ng-template>

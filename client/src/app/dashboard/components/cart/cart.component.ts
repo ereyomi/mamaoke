@@ -13,8 +13,8 @@ import {
 })
 export class CartComponent implements OnInit {
   faShoppingCart = faShoppingCart;
-  switchIt: any = 'bag';
-  isDisplay = false;
+  switchIt: any = 'continueToPayment';
+  isDisplay = true; // change back to false
   isDisplay$!: Subscription;
   componentForm = this.fb.group({
     quantity: [
@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log(this.isDisplay);
-    this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
+    // this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
   }
   closeModal(): void {
     this.pS.closeBagModal();

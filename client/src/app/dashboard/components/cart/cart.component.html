@@ -15,6 +15,10 @@
                     <ng-container *ngTemplateOutlet="bagReview"></ng-container>
                 </ng-container>
 
+                <ng-container *ngSwitchCase="'continueToPayment'">
+                    <ng-container *ngTemplateOutlet="continueToPayment"></ng-container>
+                </ng-container>
+
                 <ng-container *ngSwitchDefault>
                     <ng-container *ngTemplateOutlet="bag"></ng-container>
                 </ng-container>
@@ -223,8 +227,13 @@
             Back
         </app-button>
         <app-button (click)="closeModal()">
-            Done
+            continue to payment
         </app-button>
     </div>
 
+</ng-template>
+
+
+<ng-template #continueToPayment>
+    <app-card></app-card>
 </ng-template>

@@ -110,6 +110,7 @@
   .cart-icon {
     position: relative;
     padding-left: 5px;
+    cursor: pointer;
 
     .dash-bg-icon {
       @include flexbox;

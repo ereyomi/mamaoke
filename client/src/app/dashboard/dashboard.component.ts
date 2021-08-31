@@ -32,7 +32,8 @@ export class DashboardComponent implements OnInit {
       placeholder,
     };
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
   closeModal(): void {
     this.pS.closeBagModal();
   }

@@ -24,33 +24,28 @@ export class CardComponent implements OnInit {
   constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.dashIdxs = this.getPattern('0000-0000-0000-0000');
-    console.log(this.dashIdxs);
-
     this.sub$ = this.cardFormGroup.get('cardNumber')!.valueChanges
       .pipe(distinctUntilChanged())
       .subscribe(
         d => {
-
-          if (this.dashIdxs.includes(d.length)) {
-            d += "-";
-            console.log(d);
-            this.updateInput(d, false);
-          }
-
-
-          if ((d.length) > '0000-0000-0000-0000'.length) {
-            d = d.slice(0, '0000-0000-0000-0000'.length);
-            console.log('checking', d);
-            this.updateInput(d, true);
-
-          }
 
           if (d === '') {
             this.sel_brand = 'unknown';
           } else {
             this.cc_brand_id(d);
           }
+
+          if (this.getPatternIndex.includes(d.length)) {
+            d += "-";
+            this.updateInput(d, false);
+          }
+
+          if ((d.length) > this.getIcon.mask.length) {
+            d = d.slice(0, this.getIcon.mask.length);
+            this.updateInput(d, true);
+          }
+
+
         }
       );
   }
@@ -73,6 +68,7 @@ export class CardComponent implements OnInit {
     //Discover
     let discover_regex = new RegExp('^(6011|65|64[4-9]|62212[6-9]|6221[3-9]|622[2-8]|6229[01]|62292[0-5])[0-9]{0,}$');
     ////6011, 622126-622925, 644-649, 65
+    let unionpay_express = new RegExp('^62\\d{0,14}');
 
 
     // get rid of anything but numbers
@@ -93,6 +89,8 @@ export class CardComponent implements OnInit {
       this.sel_brand = "mastercard";
     } else if (cur_val.match(discover_regex)) {
       this.sel_brand = "discover";
+    } else if (cur_val.match(unionpay_express)) {
+      this.sel_brand = "unionpay";
     } else if (cur_val.match(maestro_regex)) {
       if (cur_val[0] == '5') { //started 5 must be mastercard
         this.sel_brand = "mastercard";
@@ -105,19 +103,19 @@ export class CardComponent implements OnInit {
   }
 
   get getIcon(): any {
-    const { ccIcon, ccSingle, cardClasses } = getCardSVG(this.sel_brand);
+    const { ccIcon, ccSingle, cardClasses, mask } = getCardSVG(this.sel_brand);
     return {
       ccIcon: this.sanitizer.bypassSecurityTrustHtml(ccIcon),
       ccSingle: this.sanitizer.bypassSecurityTrustHtml(ccSingle),
       cardClasses,
+      mask,
     };
   }
 
-  getPattern(pattern: string) {
+  get getPatternIndex() {
     let dashIdxs: any[] = [];
-
-    pattern.split("").forEach((char: any, idx: number) => {
-      if (char !== "-") {
+    this.getIcon.mask.split('').forEach((char: any, idx: number) => {
+      if (char !== '-') {
         return;
       }
 

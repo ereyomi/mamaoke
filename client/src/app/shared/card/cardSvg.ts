@@ -28,7 +28,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor lightblue',
           darkBaseColor: 'darkcolor lightbluedark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     case 'visa':
       return {
@@ -37,7 +38,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor lime',
           darkBaseColor: 'darkcolor limedark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     case 'amex':
       return {
@@ -46,7 +48,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor green',
           darkBaseColor: 'darkcolor greendark'
-        }
+        },
+        mask: '0000-000000-00000',
       };
     case 'diners':
       return {
@@ -55,7 +58,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor orange',
           darkBaseColor: 'darkcolor orangedark'
-        }
+        },
+        mask: '0000-000000-0000',
       };
     case 'discover':
       return {
@@ -64,7 +68,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor purple',
           darkBaseColor: 'darkcolor purpledark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     case 'jcb':
       return {
@@ -73,7 +78,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor red',
           darkBaseColor: 'darkcolor reddark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     case 'maestro':
       return {
@@ -82,7 +88,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor yellow',
           darkBaseColor: 'darkcolor yellowdark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     case 'unionpay':
       return {
@@ -91,7 +98,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor cyan',
           darkBaseColor: 'darkcolor cyandark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
     default:
       return {
@@ -100,7 +108,8 @@ export function getCardSVG(cardType: string) {
         cardClasses: {
           lightBaseColor: 'lightcolor grey',
           darkBaseColor: 'darkcolor greydark'
-        }
+        },
+        mask: '0000-0000-0000-0000',
       };
   }
 }

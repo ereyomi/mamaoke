@@ -235,9 +235,18 @@
 
 
 <ng-template #continueToPayment>
-   <div class="center-flex">
-      <app-card></app-card>
-   </div>
+  <div>
+    <div class="bag-header">
+      <div class="bag-section">
+          <p class="m-0 p-0 s22-h32 text-weight-bold">payment</p>
+      </div>
+  </div>
+  <div class="bag-contents">
+     <app-card></app-card>
+  </div>
+   <!-- <div class="center-flex">
+
+   </div> -->
     <div class="bag-footer">
         <app-button color="secondary" (click)="switchBagView('bagReview')">
             Back
@@ -246,4 +255,5 @@
             Done
         </app-button>
     </div>
+  </div>
 </ng-template>

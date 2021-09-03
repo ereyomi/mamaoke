@@ -6,6 +6,7 @@ import { ProductsService } from '../../services/products.service';
 import {
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
+import { validateCardNumber } from 'src/app/core/helpers/credit card/check-card';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,8 +14,8 @@ import {
 })
 export class CartComponent implements OnInit {
   faShoppingCart = faShoppingCart;
-  switchIt: any = 'bag';
-  isDisplay = false; // change back to false
+  switchIt: any = 'continueToPayment';
+  isDisplay = true; // change back to false
   isDisplay$!: Subscription;
   componentForm = this.fb.group({
     quantity: [
@@ -36,7 +37,7 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log(this.isDisplay);
-    this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
+    // this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
   }
   closeModal(): void {
     this.pS.closeBagModal();

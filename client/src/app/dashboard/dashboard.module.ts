@@ -10,6 +10,7 @@ import { DashboardProductComponent } from './components/dashboard-product/dashbo
 import { DashboardDetailsModalComponent } from './components/dashboard-details-modal/dashboard-details-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
+import { FlutterwaveModule } from 'flutterwave-angular-v3';
 
 
 
@@ -27,7 +28,8 @@ import { CartComponent } from './components/cart/cart.component';
     SharedModule,
     DashboardRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlutterwaveModule
   ],
 })
 export class DashboardModule { }

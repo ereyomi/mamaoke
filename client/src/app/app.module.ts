@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { DashboardHeaderComponent } from './dashboard/components/dashboard-header/dashboard-header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FlutterwaveModule } from 'flutterwave-angular-v3';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { DashboardHeaderComponent } from './dashboard/components/dashboard-heade
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    FlutterwaveModule
   ],
   providers: [],
   bootstrap: [AppComponent]

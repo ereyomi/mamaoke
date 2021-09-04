@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { validateCardNumber } from 'src/app/core/helpers/credit card/check-card';
+import { RequestService } from 'src/app/core/request/request.service';
 import { getCardDetails } from './creditCardDetails-helper';
 
 @Component({
@@ -24,7 +25,11 @@ export class CardComponent implements OnInit {
     securityCode: ''
   });
   @Output() creditCardDetailsEmitter: EventEmitter<any> = new EventEmitter();
-  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) { }
+  constructor(
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer,
+    private requestS: RequestService
+    ) { }
   flip() {
     this.isFlipped = !this.isFlipped;
   }
@@ -42,7 +47,7 @@ export class CardComponent implements OnInit {
           }
 
           if (this.getPatternIndex.includes(d.length)) {
-            d += ' ';
+            d += '-';
             this.updateCreditCardInput(d, false);
           }
 
@@ -172,6 +177,9 @@ export class CardComponent implements OnInit {
     const s = d.split('-').join('');
     console.log(s);
     console.log(validateCardNumber(s));
+  }
+  submitDetails(): void {
+    this.requestS.get('http://localhost:3100/api/payment').subscribe(res => {console.log(res)});
   }
 
 }

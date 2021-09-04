@@ -226,7 +226,7 @@
         <app-button color="secondary" (click)="switchBagView('bagFormA')">
             Back
         </app-button>
-        <app-button (click)="switchBagView('continueToPayment')">
+        <app-button (click)="payViaPromise()">
             continue to payment
         </app-button>
     </div>
@@ -235,6 +235,7 @@
 
 
 <ng-template #continueToPayment>
+  <button (click)="payViaPromise()" >Pay via Promise </button>
   <div>
     <div class="bag-header">
       <div class="bag-section">
@@ -244,9 +245,7 @@
   <div class="bag-contents">
      <app-card></app-card>
   </div>
-   <!-- <div class="center-flex">
-
-   </div> -->
+   <!-- <div class="center-flex"> </div> -->
     <div class="bag-footer">
         <app-button color="secondary" (click)="switchBagView('bagReview')">
             Back

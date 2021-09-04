@@ -21,7 +21,8 @@ Above line would serve all files/folders inside of the 'b' directory
 And make them accessible through http://localhost:3000/a.
 */
 const path = require('path');
-const dir = path.join(__dirname, 'public');
+const dir = path.join(__dirname, '../public');
+console.log(dir);
 
 app.use( express.static( dir ) )
 /*  */

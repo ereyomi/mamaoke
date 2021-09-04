@@ -69,24 +69,10 @@ h3 {
   line-height: rem(20);
   opacity: 0.87;
 }
-
-.text2-med {
-  @extend .text-2;
-  font-weight: 500;
-  opacity: 1;
-  letter-spacing: rem(0.1);
-  line-height: rem(24);
-}
-
 .text-body {
   font-size: rem(18);
   line-height: rem(28);
   letter-spacing: rem(0.5);
-}
-
-.text-body2 {
-  @extend .text2;
-  color: $black;
 }
 
 .text-title {
@@ -94,25 +80,6 @@ h3 {
   line-height: rem(40);
   letter-spacing: rem(-0.5);
   color: $dark-green;
-
-  @include media-breakpoint-down(sm) {
-    font-size: rem(20);
-    letter-spacing: rem(0.31);
-    line-height: rem(24);
-  }
-}
-
-.footer {
-  .text-2 {
-    @extend .text2;
-    color: $white;
-    letter-spacing: rem(0.25);
-  }
-
-  .text2-med {
-    @extend .text2-med;
-    color: $white;
-  }
 }
 
 .green-text {
@@ -137,21 +104,6 @@ h3 {
   font-weight: bold;
 }
 
-.h6-grey {
-  @extend .h6;
-  color: $grey4;
-  font-weight: normal;
-}
-
-// Page elements
-
-.page-container-title {
-  @extend .h4;
-  margin-bottom: 0;
-  color: $black;
-  line-height: rem(22);
-}
-
 // Page content
 .content-field-label {
   color: $grey4;
@@ -159,14 +111,6 @@ h3 {
   font-size: rem(16);
   line-height: rem(24);
   margin-bottom: rem(4);
-}
-
-.group-header {
-  @extend .h3;
-  @extend .px-0 !optional;
-  font-weight: normal;
-  padding-bottom: rem(4);
-  border-bottom: rem(1) solid $red;
 }
 
 .text-small {

@@ -13,6 +13,9 @@
 @import "./components/dashboard";
 @import "./components/modal";
 @import "./components/cart";
+@import "./components/creditCard";
+
+*, *:before, *:after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   background: $app-background !important;

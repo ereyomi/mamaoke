@@ -1,5 +1,7 @@
 /* they are to be arranged that way */
 @import "./theme/mixins";
 @import "./theme/variables";
+/* You can add global styles to this file, and also import other style files */
+@import "./../node_modules/bootstrap/scss/bootstrap";
 /* App custom theme scss */
 @import "./theme/theme";

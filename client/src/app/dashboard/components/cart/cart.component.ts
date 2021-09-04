@@ -15,7 +15,7 @@ import { validateCardNumber } from 'src/app/core/helpers/credit card/check-card'
 export class CartComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   switchIt: any = 'continueToPayment';
-  isDisplay = true; // change back to false
+  isDisplay = false; // change back to false
   isDisplay$!: Subscription;
   componentForm = this.fb.group({
     quantity: [
@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log(this.isDisplay);
-    // this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
+    this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
   }
   closeModal(): void {
     this.pS.closeBagModal();

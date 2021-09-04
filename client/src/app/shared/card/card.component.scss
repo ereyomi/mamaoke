@@ -289,59 +289,60 @@
     }
   }
 
-  .form-container {
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: auto auto;
-    grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
-    max-width: 400px;
-    padding: 20px;
-    color: #707070;
+
+}
+.form-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 90px 90px 90px;
+  grid-template-areas: "name name""number number""expiration security";
+  max-width: 400px;
+  padding: 20px;
+  color: #707070;
 
 
-    .field-container {
-      position: relative;
+  .field-container {
+    position: relative;
 
-      &:first-of-type {
-        grid-area: name;
-      }
+    &:first-of-type {
+      grid-area: name;
+    }
 
-      &:nth-of-type(2) {
-        grid-area: number;
-      }
+    &:nth-of-type(2) {
+      grid-area: number;
+    }
 
-      &:nth-of-type(3) {
-        grid-area: expiration;
-      }
+    &:nth-of-type(3) {
+      grid-area: expiration;
+    }
 
-      &:nth-of-type(4) {
-        grid-area: security;
-      }
+    &:nth-of-type(4) {
+      grid-area: security;
+    }
 
-      input {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        margin-top: 3px;
-        padding: 15px;
-        font-size: 16px;
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid #dcdcdc;
-      }
+    input {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-top: 3px;
+      padding: 15px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid #dcdcdc;
+    }
 
-      label {
-        padding-bottom: 5px;
-        font-size: 13px;
-      }
+    label {
+      padding-bottom: 5px;
+      font-size: 13px;
+    }
 
-      .ccicon {
-        height: 38px;
-        position: absolute;
-        right: 6px;
-        top: calc(50% - 5px);
-        width: 60px;
-      }
+    .ccicon {
+      height: 38px;
+      position: absolute;
+      right: 6px;
+      top: calc(50% - 5px);
+      width: 60px;
     }
   }
 }

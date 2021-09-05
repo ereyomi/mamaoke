@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  isAdmin =  true;
   constructor() { }
   ngOnInit(): void {
   }
   ngOnDestroy(): void {}
-
 }

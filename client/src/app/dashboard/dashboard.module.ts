@@ -11,6 +11,8 @@ import { DashboardDetailsModalComponent } from './components/dashboard-details-m
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { FlutterwaveModule } from 'flutterwave-angular-v3';
+import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
+import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
 
 
 
@@ -21,7 +23,9 @@ import { FlutterwaveModule } from 'flutterwave-angular-v3';
     DashboardCategoriesComponent,
     DashboardProductComponent,
     DashboardDetailsModalComponent,
-    CartComponent
+    CartComponent,
+    OrdersListComponent,
+    OrdersDetailsComponent
   ],
   imports: [
     CommonModule,

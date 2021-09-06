@@ -1,6 +1,6 @@
 <div class="dashboard">
   <app-navigation></app-navigation>
-  <div class="dashboard-view">
+  <!-- <div class="dashboard-view" *ngIf="!isAdmin">
     <div class="dashboard-view-header">
       <app-dashboard-header></app-dashboard-header>
       <app-dashboard-categories></app-dashboard-categories>
@@ -10,10 +10,10 @@
         <app-dashboard-product></app-dashboard-product>
       </div>
     </div>
-  </div>
- <!--  <div>
-
   </div> -->
+  <div class="dashboard-view">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <app-cart></app-cart>
 <app-dashboard-details-modal></app-dashboard-details-modal>

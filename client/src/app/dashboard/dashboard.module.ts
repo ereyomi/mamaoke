@@ -10,6 +10,11 @@ import { DashboardProductComponent } from './components/dashboard-product/dashbo
 import { DashboardDetailsModalComponent } from './components/dashboard-details-modal/dashboard-details-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
+import { FlutterwaveModule } from 'flutterwave-angular-v3';
+import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
+import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
+import { InvoiceComponent } from './components/orders/invoice/invoice.component';
+import { DashboardProductsPageeComponent } from './components/dashboard-products-pagee/dashboard-products-pagee.component';
 
 
 
@@ -20,14 +25,19 @@ import { CartComponent } from './components/cart/cart.component';
     DashboardCategoriesComponent,
     DashboardProductComponent,
     DashboardDetailsModalComponent,
-    CartComponent
+    CartComponent,
+    OrdersListComponent,
+    OrdersDetailsComponent,
+    InvoiceComponent,
+    DashboardProductsPageeComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     DashboardRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlutterwaveModule
   ],
 })
 export class DashboardModule { }

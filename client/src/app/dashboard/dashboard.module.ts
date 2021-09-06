@@ -13,6 +13,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { FlutterwaveModule } from 'flutterwave-angular-v3';
 import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
+import { InvoiceComponent } from './components/orders/invoice/invoice.component';
+import { DashboardProductsPageeComponent } from './components/dashboard-products-pagee/dashboard-products-pagee.component';
 
 
 
@@ -25,7 +27,9 @@ import { OrdersDetailsComponent } from './components/orders/orders-details/order
     DashboardDetailsModalComponent,
     CartComponent,
     OrdersListComponent,
-    OrdersDetailsComponent
+    OrdersDetailsComponent,
+    InvoiceComponent,
+    DashboardProductsPageeComponent
   ],
   imports: [
     CommonModule,

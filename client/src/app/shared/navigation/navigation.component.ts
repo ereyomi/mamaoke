@@ -12,7 +12,9 @@ import {
   faHome,
   faBookOpen,
   faNewspaper,
-  faUserCog
+  faUserCog,
+  faShoppingBasket,
+  faStore
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface Menu {
@@ -63,6 +65,18 @@ export class NavigationComponent implements OnInit {
       link: '',
       isActive: false,
       icon: faUserCog
+    },
+    {
+      menu: 'Products',
+      link: '',
+      isActive: false,
+      icon: faStore
+    },
+    {
+      menu: 'Orders',
+      link: '',
+      isActive: false,
+      icon: faShoppingBasket
     },
   ];
   constructor(private router: Router) { }

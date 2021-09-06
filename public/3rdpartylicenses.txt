@@ -76,6 +76,9 @@ Awesome, nor vice versa. **Please do not use brand logos for any purpose except
 to represent the company, product, or service to which they refer.**
 
 
+flutterwave-angular-v3
+MIT
+
 lodash
 MIT
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>

@@ -1,6 +1,6 @@
 <div class="dash-product-component">
   <div class="dash-product" *ngFor="let product of products">
-    <div class="dash-product-image" (click)="cart()">
+    <div class="dash-product-image" (click)="cart(product)">
       <div class="dash-product-image-holder">
         <img [src]="'assets/food/' + product.image" [alt]="product.name" />
       </div>

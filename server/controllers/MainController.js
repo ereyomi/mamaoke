@@ -84,8 +84,8 @@ const create = async (model, data) => {
 }
 
 const update = async ( model, request ) => {
-  const { body } = request;
-  const { id } = body;
+  const { body, params } = request;
+  const { id } = params;
 
   if (id === undefined) {
     return {
@@ -96,7 +96,7 @@ const update = async ( model, request ) => {
   }
 
   let data = await model.update( body, {where: {id}} );
-  console.log(data, )
+  console.log(data)
   if (data instanceof Array) {
     data = await model.findOne({ where: { id } });
     return { data, message: "update successful", errors: [] };
@@ -107,7 +107,7 @@ const update = async ( model, request ) => {
 
 const deleteModel = async (model, request) => {
   try {
-    const { id } = request.body;
+    const { id } = request.params;
     const data = await model.destroy({
         where: {
           id,

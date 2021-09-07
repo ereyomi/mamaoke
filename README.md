@@ -36,3 +36,6 @@ npm run dev
 
 ### Backend Interaction
 (sequelize)[https://sequelize.org/master/]
+
+### create Directory
+public/uploads

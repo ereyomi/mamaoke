@@ -10,7 +10,7 @@ module.exports = {
       },
       category_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
        /*  references: { // I have an error here:: i think its because the product page get created before the category model
           model: {
             tableName: 'categories',

@@ -12,8 +12,8 @@ app.use( cors() );
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 // using bodyParser to parse JSON bodies into JS objects
-app.use(bodyParser.json());
-app.use( bodyParser.urlencoded( {extended: true} ) );
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /*
 app.use('/a',express.static('/b'));
@@ -27,8 +27,8 @@ console.log(dir);
 app.use( express.static( dir ) )
 /*  */
 //router routes
-// const productRouter = require('./server/router/ProductRouter')
-// app.use('/api', productRouter);
+const productRouter = require('./server/router/ProductRouter')
+app.use('/api', productRouter);
 /*  */
 /* flutter wave */
 const {PUBLIC_KEY,  SECRET_KEY, ENCRYPTION_KEY} = process.env;

@@ -2,7 +2,7 @@
     <div class="app-modal-body" (click)="stopModalPropagation($event)">
         <div class="app-modal-header">
             <div class="modal-name">
-                {{ name }}
+                {{ isDisplayProduct?.name }}
             </div>
             <div class="modal-close-icon" (click)="closeModal()">
                 <img src="assets/svg/close-icon.svg" alt="">
@@ -10,13 +10,13 @@
         </div>
         <div class="modal-desc">
             <div class="modal-img">
-                <img src="assets/food/egusi-soup.jpg" alt="egusi-soup.jpg">
+                <img [src]="'assets/food/' + isDisplayProduct?.image" alt="egusi-soup.jpg">
             </div>
            <div>
                <h2 class="modal-name-b">
-                    {{ name }}
+                {{ isDisplayProduct?.name }}
                 </h2>
-                <p class="modal-desc-text">
+                <!-- <p class="modal-desc-text">
                 It is a long established fact that a reader will be
                 distracted by the readable content of a page when looking at its layout.
                 The point of using Lorem Ipsum is that it has a more-or-less normal
@@ -26,7 +26,7 @@
                 for 'lorem ipsum' will uncover many web sites still in their infancy.
                 Various versions have evolved over the years, sometimes by accident,
                 sometimes on purpose (injected humour and the like).
-                </p>
+                </p> -->
                 <div class="modal-buttons">
                     <div class="my-3" [formGroup]="componentForm">
                         <app-inputs-type-b type="quantity" formControlName="quantity"></app-inputs-type-b>
@@ -42,7 +42,7 @@
 
                       <div class="btn-div">
                         <app-button color="secondary">
-                            <span class="app-primary-color">Cancel</span>
+                            <span class="app-primary-color" (click)="closeModal()">Cancel</span>
                         </app-button>
                       </div>
 

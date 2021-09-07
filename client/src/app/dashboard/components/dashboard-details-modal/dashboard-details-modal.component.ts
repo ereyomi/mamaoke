@@ -9,13 +9,13 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./dashboard-details-modal.component.scss']
 })
 export class DashboardDetailsModalComponent implements OnInit {
-
-  name = 'mock name';
   isDisplay = true;
-  isDisplay$: Subscription = this.pS.getProductModalDisplayStatus().subscribe(status => this.isDisplay = status);;
+  isDisplayProduct: any;
+  isDisplay$: Subscription = this.pS.getProductModalDisplayStatus().subscribe(status => this.isDisplay = status);
+  isDisplayProduct$: Subscription = this.pS.getBagModalProduct().subscribe(product => this.isDisplayProduct = product);
   componentForm: FormGroup = this.fb.group({
     quantity: [
-      '0',
+      '1',
       [
         Validators.required,
       ],

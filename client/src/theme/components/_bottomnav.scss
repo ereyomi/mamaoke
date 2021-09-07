@@ -4,7 +4,7 @@
 
 .bottomnav {
   bottom: 0;
-  padding: 0 16px;
+  padding: 10px 16px;
   width: 100%;
   z-index: 1000;
   position: fixed;
@@ -28,6 +28,7 @@
         padding: 6px;
         /* remove this latter */
         @include flexbox;
+        @include flex-direction(column);
         @include align-items(center);
         @include justify-content(center);
         cursor: pointer;
@@ -36,7 +37,7 @@
         border-radius: 15px;
 
         &.active {
-          background: var(--app-color-F87192);
+          /* background: var(--app-color-F87192); */
 
           .icon-sec {
             background: var(--app-color-EC6182) !important;
@@ -62,6 +63,10 @@
             pointer-events: none !important;
             width: 20;
           }
+        }
+        span {
+          margin: 0;
+          font-size: 0.6rem;
         }
       }
     }

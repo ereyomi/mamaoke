@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { dummyProducts } from '../../dashboard-dummy-products';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -7,48 +8,7 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./dashboard-product.component.scss']
 })
 export class DashboardProductComponent implements OnInit {
-  products = [
-    {
-      name: 'Pepper soup',
-      image: 'pepper-soup-goat-meat.jpg',
-      amount: 1500,
-    },
-    {
-      name: 'Egusi soup',
-      image: 'egusi-soup.jpg',
-      amount: 2000,
-    },
-    {
-      name: 'cat pepper soup',
-      image: 'catfish-pepper-soup.jpg',
-      amount: 3700,
-    },
-    {
-      name: 'Water leaf',
-      image: 'water-leave-soup.jpg',
-      amount: 1200,
-    },
-    {
-      name: 'Fried Rice',
-      image: 'fried-rice.jpg',
-      amount: 1500,
-    },
-    {
-      name: 'Jollof Rice',
-      image: 'jollof-rice.webp',
-      amount: 1500,
-    },
-    {
-      name: 'Afang soup',
-      image: 'nigerian-afang-soup.jpg',
-      amount: 800,
-    },
-    {
-      name: 'Pepper soup b',
-      image: 'pepper-soup.jpg',
-      amount: 15500,
-    },
-  ];
+  products = dummyProducts;
 
   constructor(private pS: ProductsService) { }
 
@@ -59,9 +19,8 @@ export class DashboardProductComponent implements OnInit {
       currency: 'NGN',
     }).format(price);
   };
-  cart(): void {
-    console.log('clicked');
-    this.pS.openProductModal();
+  cart(product: any): void {
+    this.pS.openProductModal(product);
   }
 
 }

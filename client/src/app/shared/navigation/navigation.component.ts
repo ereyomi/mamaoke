@@ -36,7 +36,8 @@ export class NavigationComponent implements OnInit {
     this.screenWidth = e.target.innerWidth;
     this.screenChange();
   }, 200);
-  targetedScreenWidth = 765;
+  _targetedScreenWidth = 765;
+  targetedScreenWidth =  1024;
   screenWidth: any;
   smallScreenStatus!: boolean;
   biggerScreenStatus!: boolean;

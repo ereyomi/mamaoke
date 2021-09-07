@@ -8,6 +8,8 @@ export class ProductsService {
 
   isDisplayProductModal = new BehaviorSubject(false);
   isDisplayBagModal =  new BehaviorSubject(false);
+  toDisplayProduct =  new BehaviorSubject(null);
+
   constructor() { }
   getProductModalDisplayStatus(): Observable<boolean> {
     return this.isDisplayProductModal.asObservable();
@@ -15,7 +17,11 @@ export class ProductsService {
   getBagModalDisplayStatus(): Observable<boolean> {
     return this.isDisplayBagModal.asObservable();
   }
-  openProductModal(): void {
+  getBagModalProduct(): Observable<any> {
+    return this.toDisplayProduct.asObservable();
+  }
+  openProductModal(product: any): void {
+    this.toDisplayProduct.next(product);
     this.isDisplayProductModal.next(true);
   }
   closeProductModal(): void {
@@ -25,6 +31,7 @@ export class ProductsService {
     this.isDisplayBagModal.next(true);
   }
   closeBagModal(): void {
+    this.toDisplayProduct.next(null);
     this.isDisplayBagModal.next(false);
   }
 }

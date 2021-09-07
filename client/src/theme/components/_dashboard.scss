@@ -80,7 +80,7 @@
     @include justify-content(center);
     padding: 0 5px;
 
-    @include media(">=tablet") {
+    @include media(">=desktop") {
       display: none !important;
     }
 
@@ -153,7 +153,7 @@
 
   .dash-name {
     font-family: Montserrat;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
     color: var(--app-color-323141);
 
@@ -163,7 +163,7 @@
 
     display: none;
 
-    @include media(">=tablet") {
+    @include media(">=desktop") {
       display: initial;
     }
   }

@@ -9,24 +9,7 @@ export class ProductsService {
   isDisplayProductModal = new BehaviorSubject(false);
   isDisplayBagModal =  new BehaviorSubject(false);
   toDisplayProduct =  new BehaviorSubject(null);
-  cart$ = new BehaviorSubject<Array<any>>([
-    {
-    id: 55,
-    name: 'Pepper soup',
-    image: 'pepper-soup-goat-meat.jpg',
-    amount: 1500,
-    category: 'soup',
-    qty: 2
-  },
-  {
-    id: 56,
-    name: 'Pepper soup',
-    image: 'pepper-soup-goat-meat.jpg',
-    amount: 1500,
-    category: 'soup',
-    qty: 2
-  },
-]);
+  cart$ = new BehaviorSubject<Array<any>>([]);
 
   constructor() { }
   getProductModalDisplayStatus(): Observable<boolean> {

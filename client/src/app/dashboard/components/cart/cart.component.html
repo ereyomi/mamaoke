@@ -207,36 +207,32 @@
              <div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-14">
-                    <p class="m-0 ml-16 text-weight-bold s14-h16">Chapele Tega</p>
+                    <p class="m-0 ml-16 text-weight-bold s14-h16">{{orderDetails.firstName}} {{orderDetails.lastName}}</p>
                  </div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-14">
-                    <p class="m-0 ml-16 s14-h16">chapele@gmail.com</p>
+                    <p class="m-0 ml-16 s14-h16">{{orderDetails.email}}</p>
                  </div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-30">
-                    <p class="m-0 ml-16 s14-h16">+2347035432921</p>
+                    <p class="m-0 ml-16 s14-h16">+234{{orderDetails.phone}}</p>
                  </div>
 
                  <div class="col-10 p-0">
                     <p class="m-0 s12-h16 text-weight-bold mb-10">Delivery Address</p>
-                    <p class="m-0 s14-h16">1000, loram is playing street, surulere, Delta State, Nigeria</p>
+                    <p class="m-0 s14-h16">{{orderDetails.address}}</p>
                  </div>
 
              </div>
 
-             <div class="mt-60">
-                <div class="bag-content">
-                    <p class="m-0 s12-h16 text-weight-bold">Egusi <span class="m-0 ml-6">x3</span></p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">5,000</span></p>
-                </div>
-                <div class="bag-content">
-                    <p class="m-0 s12-h16 text-weight-bold">Goat Soup <span class="m-0 ml-6">x3</span></p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">5,000</span></p>
+             <div class="mt-60" *ngIf="cartComponentFormData?.cartFormGroup">
+                <div class="bag-content" *ngFor="let item of cartComponentFormData?.cartFormGroup">
+                    <p class="m-0 s12-h16 text-weight-bold">{{item.name}} <span class="m-0 ml-6">({{item.amount}}) - x{{item.qty}}</span></p>
+                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6"></span><span>{{compmuteQuantityAndAmount(item.amount, item.qty)}}</span></p>
                 </div>
                 <div class="bag-content">
                     <p class="m-0 s12-h16 text-weight-bold">Total</p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">10,000</span></p>
+                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">{{totalAmount}}</span></p>
                 </div>
              </div>
 

@@ -24,11 +24,11 @@ export class CartComponent implements OnInit {
     cartFormGroup: this.fb.array([])
   });
   orderFormGroup = this.fb.group({
-    firstName: '',
-    lasttName: '',
-    email: '',
-    phone: '',
-    address: ''
+    firstName: 'Ereyomi',
+    lastName: 'Oluwaseyi',
+    email: 'ere@gmail.com',
+    phone: '7035432921',
+    address: 'Nil'
   });
   cart$: any;
   cartItems: any;
@@ -76,6 +76,7 @@ export class CartComponent implements OnInit {
         this.cartItems = d;
         this.onLoadCartFormArray(this.cartItems);
       });
+      console.log(this.orderDetails, this.cartComponentFormData);
   }
   closeModal(): void {
     this.pS.closeBagModal();
@@ -169,5 +170,14 @@ export class CartComponent implements OnInit {
   change(e: any, _i: number, q: any) {
     this.pS.updateProductInCart(
       {...q, qty: e});
+  }
+  get orderDetails() {
+    return this.orderFormGroup.value;
+  }
+  get cartComponentFormData() {
+    return this.componentForm.value;
+  }
+  compmuteQuantityAndAmount(amount: string | number, qty: string | number) {
+    return Number(amount) * Number(qty);
   }
 }

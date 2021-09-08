@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      console.log( models );
       /* 
         {
         categories: categories,
@@ -19,12 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         product: product,
         user: user
         }
-      
        */
         User.hasMany(models.Order, {
           foreignKey: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
+            name: 'user_id',
+            type: DataTypes.INTEGER,
+            allowNull: false,
         }
         });
     }

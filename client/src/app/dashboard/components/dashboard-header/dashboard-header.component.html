@@ -20,8 +20,8 @@
     <div class="dash-bg-icon">
       <fa-icon [icon]="icons.cart"></fa-icon>
     </div>
-    <div class="cart-icon-number">
-      <span>20</span>
+    <div class="cart-icon-number" *ngIf="numberOfItemsInCart">
+      <span>{{numberOfItemsInCart}}</span>
     </div>
   </div>
 </div>

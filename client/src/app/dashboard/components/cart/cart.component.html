@@ -30,37 +30,36 @@
 
 
 <ng-template #bag>
-    <div>
+    <div  [formGroup]="componentForm">
         <div class="bag-header">
             <div class="bag-section cursor-pointer" (click)="closeModal()">
                 <fa-icon [icon]="faShoppingCart"></fa-icon>
-                <span class="m-0 p-0 s15-h24 ml-6">15</span>
+                <span class="m-0 p-0 s15-h24 ml-6">{{numberOfItemsInCart}}</span>
             </div>
             <div class="price-section">
-                <p class="m-0 s15-h24"><b>NGN</b> 20,000</p>
-                <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p>
+                <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>
+                <!-- <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p> -->
             </div>
         </div>
 
-        <div class="bag-contents">
-            <div class="bag-content">
-
+        <div class="bag-contents" formArrayName="cartFormGroup">
+            <div class="bag-content" *ngFor="let quantity of cartItemsFormGroup().controls; let i=index" [formGroupName]="i">
                 <div>
                     <div class="bag-product-img">
-                        <img src="assets/food/egusi-soup.jpg" alt="">
+                        <img [src]="'assets/food/' + quantity?.value?.image" alt="">
                     </div>
                     <div>
-                        <p class="m-0 s12-h16 s15-md-h24">Egusi Soup</p>
-                        <p class="m-0 s12-h16 s15-md-h24">NGN 5,000</p>
+                        <p class="m-0 s12-h16 s15-md-h24">{{quantity?.value?.name}}</p>
+                        <p class="m-0 s12-h16 s15-md-h24">{{quantity?.value?.amount}}</p>
                     </div>
                 </div>
 
                 <div>
-                    <div class="ml-6 ml-md-0" [formGroup]="componentForm">
-                      <app-inputs-type-b type="quantity" formControlName="quantity"></app-inputs-type-b>
+                    <div class="ml-6 ml-md-0" >
+                      <app-inputs-type-b type="quantity" formControlName="qty" (onInputChange)="change($event, i, quantity?.value)"></app-inputs-type-b>
                     </div>
                     <div class="ml-6">
-                        <button class="btn-none">
+                        <button class="btn-none" (click)="removeCartItemFromCartFormGroupArray(i, quantity?.value)">
                             <img src="assets/svg/delete-icon.svg" alt="" class="icon-20">
                         </button>
                     </div>
@@ -83,11 +82,11 @@
 </ng-template>
 
 <ng-template #bagFormA>
-    <div>
+    <div [formGroup]="orderFormGroup">
         <div class="bag-header">
             <div class="">
                 <p class="m-0 p-0 s22-h32 text-weight-bold">Mama Oke</p>
-                <p class="m-0 p-0 text-weight-medium s15-h24">Shipping</p>
+                <p class="m-0 p-0 text-weight-medium s15-h24">Resturant</p>
             </div>
         </div>
         <div class="bag-contents">
@@ -100,12 +99,21 @@
                 <div class="col p-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
                         <div>
-                            <app-inputs-type-b type="input" [config]="inputConfig('First Name')"></app-inputs-type-b>
+                            <app-inputs-type-b
+                            type="input"
+                            [config]="inputConfig('First Name')"
+                            formControlName="firstName">
+                          </app-inputs-type-b>
                         </div>
                     </div>
                     <div class="col-5">
                         <div>
-                            <app-inputs-type-b type="input" [config]="inputConfig('Last Name')"></app-inputs-type-b>
+                            <app-inputs-type-b
+                            type="input"
+                            [config]="inputConfig('Last Name')"
+                            formControlName="lastName"
+                            >
+                          </app-inputs-type-b>
                         </div>
                     </div>
                 </div>
@@ -116,7 +124,12 @@
                 <div class="col-12 mt-20">
                     <div>
                         <label class="m-0 s12-h16 text-weight-bold">Your Email</label>
-                        <app-inputs-type-b type="input" [config]="inputConfig('Email', 'email')"></app-inputs-type-b>
+                        <app-inputs-type-b
+                        type="input"
+                        [config]="inputConfig('Email', 'email')"
+                        formControlName="email"
+                        >
+                      </app-inputs-type-b>
                     </div>
                 </div>
             </div>
@@ -131,7 +144,11 @@
                     <p class="m-0 mr-16">
                     +234
                     </p>
-                    <app-inputs-type-b type="input" [config]="inputConfig('Number', 'tel')"></app-inputs-type-b>
+                    <app-inputs-type-b
+                      type="input"
+                      [config]="inputConfig('Number', 'tel')"
+                      formControlName="phone"
+                    ></app-inputs-type-b>
 
                 </div>
             </div>
@@ -140,7 +157,11 @@
                 <div class="col-12 mt-20">
                     <div>
                        <label class="m-0 s12-h16 text-weight-bold">Delivery Address</label>
-                        <app-inputs-type-b type="input" [config]="inputConfig('Full Address')"></app-inputs-type-b>
+                        <app-inputs-type-b
+                        type="input"
+                        [config]="inputConfig('Full Address')"
+                        formControlName="address"
+                        ></app-inputs-type-b>
                     </div>
                 </div>
             </div>
@@ -161,11 +182,11 @@
     <div class="bag-footer">
         <div class="bag-section cursor-pointer" (click)="closeModal()">
             <fa-icon [icon]="faShoppingCart"></fa-icon>
-            <span class="m-0 p-0 s15-h24 ml-6">5</span>
+            <span class="m-0 p-0 s15-h24 ml-6">{{numberOfItemsInCart}}</span>
         </div>
         <div class="price-section">
-            <p class="m-0 s15-h24"><b>NGN</b> 20,000</p>
-            <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p>
+            <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>
+           <!--  <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p> -->
         </div>
     </div>
 </ng-template>
@@ -186,36 +207,32 @@
              <div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-14">
-                    <p class="m-0 ml-16 text-weight-bold s14-h16">Chapele Tega</p>
+                    <p class="m-0 ml-16 text-weight-bold s14-h16">{{orderDetails.firstName}} {{orderDetails.lastName}}</p>
                  </div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-14">
-                    <p class="m-0 ml-16 s14-h16">chapele@gmail.com</p>
+                    <p class="m-0 ml-16 s14-h16">{{orderDetails.email}}</p>
                  </div>
 
                  <div class="d-flex flex-row justify-content-start align-items-center mb-30">
-                    <p class="m-0 ml-16 s14-h16">+2347035432921</p>
+                    <p class="m-0 ml-16 s14-h16">+234{{orderDetails.phone}}</p>
                  </div>
 
                  <div class="col-10 p-0">
                     <p class="m-0 s12-h16 text-weight-bold mb-10">Delivery Address</p>
-                    <p class="m-0 s14-h16">1000, loram is playing street, surulere, Delta State, Nigeria</p>
+                    <p class="m-0 s14-h16">{{orderDetails.address}}</p>
                  </div>
 
              </div>
 
-             <div class="mt-60">
-                <div class="bag-content">
-                    <p class="m-0 s12-h16 text-weight-bold">Egusi <span class="m-0 ml-6">x3</span></p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">5,000</span></p>
-                </div>
-                <div class="bag-content">
-                    <p class="m-0 s12-h16 text-weight-bold">Goat Soup <span class="m-0 ml-6">x3</span></p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">5,000</span></p>
+             <div class="mt-60" *ngIf="cartComponentFormData?.cartFormGroup">
+                <div class="bag-content" *ngFor="let item of cartComponentFormData?.cartFormGroup">
+                    <p class="m-0 s12-h16 text-weight-bold">{{item.name}} <span class="m-0 ml-6">({{item.amount}}) - x{{item.qty}}</span></p>
+                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6"></span><span>{{compmuteQuantityAndAmount(item.amount, item.qty)}}</span></p>
                 </div>
                 <div class="bag-content">
                     <p class="m-0 s12-h16 text-weight-bold">Total</p>
-                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">10,000</span></p>
+                    <p class="m-0 s12-h16 text-weight-bold">NGN  <span class="m-0 ml-6">{{totalAmount}}</span></p>
                 </div>
              </div>
 

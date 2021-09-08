@@ -9,7 +9,7 @@ router.get( '/product/:id', getOne );
 router.get( '/products/:page', list );
 router.post( '/product', upload.any(), postProduct );
 router.patch( '/product', updateProductDetails );
-router.delete( '/product', deleteProduct );
+router.delete( '/product/:id', deleteProduct );
 router.post('/postimg', uploadSingle,postSingleImg);
 router.post( '/multiple', uploadMultiple, postMultipleImg );
 

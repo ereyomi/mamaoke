@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardCategoriesComponent } from './components/dashboard-categories/dashboard-categories.component';
 import { DashboardProductComponent } from './components/dashboard-product/dashboard-product.component';
 import { DashboardDetailsModalComponent } from './components/dashboard-details-modal/dashboard-details-modal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { FlutterwaveModule } from 'flutterwave-angular-v3';
 import { OrdersListComponent } from './components/orders/orders-list/orders-list.component';
@@ -37,7 +37,8 @@ import { DashboardProductsPageeComponent } from './components/dashboard-products
     DashboardRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FlutterwaveModule
+    FlutterwaveModule,
+    FormsModule
   ],
 })
 export class DashboardModule { }

@@ -24,7 +24,7 @@ const postProduct = async ( req, res ) => {
     const getFilePath = MainController.getFileWithPath(files[0])
     const data = {
         ...body,
-        product_img_url: getFilePath,
+        productImgUrl: getFilePath,
     }
     const createData = await MainController.create( Product, data );
     if ( createData.hasOwnProperty('id')) {

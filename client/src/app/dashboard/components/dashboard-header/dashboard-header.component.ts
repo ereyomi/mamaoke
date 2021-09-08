@@ -30,9 +30,14 @@ export class DashboardHeaderComponent implements OnInit {
     search: faSearch
   };
   searchStatus = true;
+  numberOfItemsInCart!: number;
+  numberOfItemsInCart$ = this.pS.getTotalNumberOfItemsInCart.subscribe((d: number) => {
+    this.numberOfItemsInCart = d;
+  });
+
   constructor(private eRef: ElementRef, private pS: ProductsService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   toggleSearched(): void {
     this.searchStatus = !this.searchStatus;
   }

@@ -12,6 +12,16 @@ npm install
 npm run client
 ```
 
+### Run migration for server
+```bash
+npx sequelize-cli db:migrate
+```
+
+### Run seeding for server
+```bash
+npx sequelize-cli db:seed:all
+```
+
 ### Run server
 ```bash
 npm run server
@@ -23,3 +33,9 @@ npm run dev
 ```
 ### Useful SCSS
 (include.scss)[https://eduardoboucas.github.io/include-media/]
+
+### Backend Interaction
+(sequelize)[https://sequelize.org/master/]
+
+### create Directory
+public/uploads

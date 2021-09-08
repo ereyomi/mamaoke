@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { InputConfig } from 'src/app/shared/forms/models/input/input-config';
 import { ProductsService } from '../../services/products.service';
@@ -16,16 +16,13 @@ import {Flutterwave, InlinePaymentOptions, PaymentSuccessResponse} from "flutter
 export class CartComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   switchIt: any = 'bag';
-  isDisplay = false; // change back to false
+  isDisplay = true; // change back to false
   isDisplay$!: Subscription;
   componentForm = this.fb.group({
-    quantity: [
-      '12',
-      [
-        Validators.required,
-      ],
-    ],
+    cartFormGroup: this.fb.array([])
   });
+  cart$: any;
+  cartItems: any;
   //use your PUBLIC_KEY here
   publicKey = "FLWPUBK_TEST-584f40de47a6fa65b4ac934db0ead0b5-X";
 
@@ -65,6 +62,11 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
+    this.cart$ = this.pS.getProductsinCart().subscribe(d =>
+      {
+        this.cartItems = d
+        this.onLoadCartFormArray(this.cartItems);
+      });
   }
   closeModal(): void {
     this.pS.closeBagModal();
@@ -101,5 +103,55 @@ export class CartComponent implements OnInit {
       }
     )
   }
+  cartItemsFormGroup() : FormArray {
+    return this.componentForm.get("cartFormGroup") as FormArray;
+  }
+  cartFormGroupArrayItem(data: any): FormGroup {
+    return this.fb.group({
+      id: data?.id || '',
+      name: data?.name || '',
+      image: data?.image || '',
+      amount: data?.amount || 0,
+      category:  data?.category || 0,
+      qty: data?.qty || 1
+    })
+  }
+  addQuantity(data: any) {
+    this.cartItemsFormGroup().push(
+        this.cartFormGroupArrayItem(data)
+      );
+  }
 
+  removeCartItemFromCartFormGroupArray(i:number) {
+    this.cartItemsFormGroup().removeAt(i);
+  }
+  updateCheckControl(cal: any, data: any) {
+    if (data.qty) {
+     this.addQuantity(data);
+    } else {
+      cal.controls.forEach((item: FormControl, index: any) => {
+        if (item.value === data.value) {
+          cal.removeAt(index);
+          return;
+        }
+      });
+    }
+  }
+
+  onLoadCartFormArray(data: any) {
+    const cartFormGroupArray: FormArray = this.cartItemsFormGroup();
+    this.clearFormArray(cartFormGroupArray);
+    if (data) {
+
+      data.forEach((o: any) => {
+        this.updateCheckControl(cartFormGroupArray, o);
+      });
+    }
+
+  }
+  clearFormArray = (formArray: FormArray) => {
+    while (formArray.length !== 0) {
+      formArray.removeAt(0)
+    }
+  }
 }

@@ -9,6 +9,24 @@ export class ProductsService {
   isDisplayProductModal = new BehaviorSubject(false);
   isDisplayBagModal =  new BehaviorSubject(false);
   toDisplayProduct =  new BehaviorSubject(null);
+  cart$ = new BehaviorSubject<Array<any>>([
+    {
+    id: 55,
+    name: 'Pepper soup',
+    image: 'pepper-soup-goat-meat.jpg',
+    amount: 1500,
+    category: 'soup',
+    qty: 1
+  },
+  {
+    id: 56,
+    name: 'Pepper soup',
+    image: 'pepper-soup-goat-meat.jpg',
+    amount: 1500,
+    category: 'soup',
+    qty: 1
+  }
+]);
 
   constructor() { }
   getProductModalDisplayStatus(): Observable<boolean> {
@@ -33,5 +51,14 @@ export class ProductsService {
   closeBagModal(): void {
     this.toDisplayProduct.next(null);
     this.isDisplayBagModal.next(false);
+  }
+  addToCart(data: any){
+    this.cart$.next(
+      [...this.cart$.value, {...data, qty: 1}]
+    );
+    this.openBagModal();
+  }
+  getProductsinCart() {
+    return this.cart$.asObservable();
   }
 }

@@ -30,7 +30,7 @@
 
 
 <ng-template #bag>
-    <div>
+    <div  [formGroup]="componentForm">
         <div class="bag-header">
             <div class="bag-section cursor-pointer" (click)="closeModal()">
                 <fa-icon [icon]="faShoppingCart"></fa-icon>
@@ -42,22 +42,21 @@
             </div>
         </div>
 
-        <div class="bag-contents">
-            <div class="bag-content">
-
+        <div class="bag-contents" formArrayName="cartFormGroup">
+            <div class="bag-content" *ngFor="let quantity of cartItemsFormGroup().controls; let i=index" [formGroupName]="i">
                 <div>
                     <div class="bag-product-img">
-                        <img src="assets/food/egusi-soup.jpg" alt="">
+                        <img [src]="'assets/food/' + quantity?.value?.image" alt="">
                     </div>
                     <div>
-                        <p class="m-0 s12-h16 s15-md-h24">Egusi Soup</p>
-                        <p class="m-0 s12-h16 s15-md-h24">NGN 5,000</p>
+                        <p class="m-0 s12-h16 s15-md-h24">{{quantity?.value?.name}}</p>
+                        <p class="m-0 s12-h16 s15-md-h24">{{quantity?.value?.amount}}</p>
                     </div>
                 </div>
 
                 <div>
-                    <div class="ml-6 ml-md-0" [formGroup]="componentForm">
-                      <app-inputs-type-b type="quantity" formControlName="quantity"></app-inputs-type-b>
+                    <div class="ml-6 ml-md-0" >
+                      <app-inputs-type-b type="quantity" formControlName="qty"></app-inputs-type-b>
                     </div>
                     <div class="ml-6">
                         <button class="btn-none">

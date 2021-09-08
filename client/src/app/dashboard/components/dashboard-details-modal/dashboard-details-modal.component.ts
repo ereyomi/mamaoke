@@ -33,7 +33,7 @@ export class DashboardDetailsModalComponent implements OnInit {
   }
   openBag(): void {
     this.closeModal();
-    this.pS.openBagModal();
+    this.pS.addToCart(this.isDisplayProduct);
   }
   stopModalPropagation(event: Event): void {
     event.stopPropagation();

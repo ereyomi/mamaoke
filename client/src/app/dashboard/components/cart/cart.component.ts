@@ -7,8 +7,7 @@ import {
   faShoppingCart
 } from '@fortawesome/free-solid-svg-icons';
 import { RequestService } from 'src/app/core/request/request.service';
-import {Flutterwave, InlinePaymentOptions, PaymentSuccessResponse} from "flutterwave-angular-v3"
-import { distinctUntilChanged } from 'rxjs/operators';
+import {Flutterwave, InlinePaymentOptions, PaymentSuccessResponse} from 'flutterwave-angular-v3';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -54,6 +53,7 @@ export class CartComponent implements OnInit {
     onclose: this.closedPaymentModal,
     callbackContext: this
   };
+  quantityNumber: any;
   constructor(
     private fb: FormBuilder,
     private pS: ProductsService,
@@ -157,7 +157,7 @@ export class CartComponent implements OnInit {
         this.updateCheckControl(cartFormGroupArray, o);
       });
       this.totalAmount = data.reduce((accumulator: any, currentValue: any) => {
-        return accumulator + (currentValue.amount * currentValue.qty)
+        return accumulator + (currentValue.amount * currentValue.qty);
       }, 0
       );
     }

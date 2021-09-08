@@ -37,9 +37,16 @@ export class ProductsService {
     this.isDisplayBagModal.next(false);
   }
   addToCart(data: any){
-    this.cart$.next(
-      [...this.cart$.value, {...data, qty: 1}]
-    );
+    // perform deep find Index
+    const prodIndex = this.cart$.value.findIndex(dd => dd.id === data.id);
+    console.log(prodIndex);
+    if(prodIndex < 0) {
+      this.cart$.next(
+        [...this.cart$.value, {...data}]
+      );
+    }else {
+      this.updateProductInCart(data);
+    }
     // update number of Items
     this.updateNumberOfItemsInCart();
     // open cart

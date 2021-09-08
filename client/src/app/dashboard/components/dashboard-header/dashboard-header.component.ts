@@ -31,16 +31,13 @@ export class DashboardHeaderComponent implements OnInit {
   };
   searchStatus = true;
   numberOfItemsInCart!: number;
-  // numberOfItemsInCart$ =
+  numberOfItemsInCart$ = this.pS.getTotalNumberOfItemsInCart.subscribe((d: number) => {
+    this.numberOfItemsInCart = d;
+  });
 
   constructor(private eRef: ElementRef, private pS: ProductsService) { }
 
-  ngOnInit(): void {
-    this.pS.getTotalNumberOfItemsInCart.subscribe((d: number) => {
-      this.numberOfItemsInCart = d
-      console.log(d);
-    });
-   }
+  ngOnInit(): void {}
   toggleSearched(): void {
     this.searchStatus = !this.searchStatus;
   }

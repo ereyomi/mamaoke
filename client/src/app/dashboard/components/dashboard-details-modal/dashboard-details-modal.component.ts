@@ -14,7 +14,7 @@ export class DashboardDetailsModalComponent implements OnInit {
   isDisplay$: Subscription = this.pS.getProductModalDisplayStatus().subscribe(status => this.isDisplay = status);
   isDisplayProduct$: Subscription = this.pS.getBagModalProduct().subscribe(product => this.isDisplayProduct = product);
   componentForm: FormGroup = this.fb.group({
-    quantity: [
+    qty: [
       '1',
       [
         Validators.required,
@@ -33,7 +33,13 @@ export class DashboardDetailsModalComponent implements OnInit {
   }
   openBag(): void {
     this.closeModal();
-    this.pS.addToCart(this.isDisplayProduct);
+    console.log(this.isDisplayProduct, this.componentForm.value);
+    const {qty} = this.componentForm.value;
+    this.pS.addToCart(
+      {
+        ...this.isDisplayProduct,
+        qty: Number(qty)
+      });
   }
   stopModalPropagation(event: Event): void {
     event.stopPropagation();

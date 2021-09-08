@@ -34,7 +34,7 @@
         <div class="bag-header">
             <div class="bag-section cursor-pointer" (click)="closeModal()">
                 <fa-icon [icon]="faShoppingCart"></fa-icon>
-                <span class="m-0 p-0 s15-h24 ml-6">15</span>
+                <span class="m-0 p-0 s15-h24 ml-6">{{numberOfItemsInCart}}</span>
             </div>
             <div class="price-section">
                 <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>
@@ -182,7 +182,7 @@
     <div class="bag-footer">
         <div class="bag-section cursor-pointer" (click)="closeModal()">
             <fa-icon [icon]="faShoppingCart"></fa-icon>
-            <span class="m-0 p-0 s15-h24 ml-6">5</span>
+            <span class="m-0 p-0 s15-h24 ml-6">{{numberOfItemsInCart}}</span>
         </div>
         <div class="price-section">
             <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>

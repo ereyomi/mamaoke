@@ -54,6 +54,10 @@ export class CartComponent implements OnInit {
     callbackContext: this
   };
   quantityNumber: any;
+  numberOfItemsInCart!: number;
+  numberOfItemsInCart$ = this.pS.getTotalNumberOfItemsInCart.subscribe((d: number) => {
+    this.numberOfItemsInCart = d;
+  });
   constructor(
     private fb: FormBuilder,
     private pS: ProductsService,
@@ -74,9 +78,9 @@ export class CartComponent implements OnInit {
     this.cart$ = this.pS.getProductsinCart().subscribe(d =>
       {
         this.cartItems = d;
+        console.log(d);
         this.onLoadCartFormArray(this.cartItems);
       });
-      console.log(this.orderDetails, this.cartComponentFormData);
   }
   closeModal(): void {
     this.pS.closeBagModal();

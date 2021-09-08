@@ -73,8 +73,7 @@ export class CartComponent implements OnInit {
     this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
     this.cart$ = this.pS.getProductsinCart().subscribe(d =>
       {
-        this.cartItems = d
-        console.log(d);
+        this.cartItems = d;
         this.onLoadCartFormArray(this.cartItems);
       });
   }
@@ -132,8 +131,9 @@ export class CartComponent implements OnInit {
       );
   }
 
-  removeCartItemFromCartFormGroupArray(i:number) {
+  removeCartItemFromCartFormGroupArray(i:number, quantity: any) {
     this.cartItemsFormGroup().removeAt(i);
+    this.pS.removeProductProductInCart(quantity.id);
   }
   updateCheckControl(cal: any, data: any) {
     if (data.qty) {

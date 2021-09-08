@@ -68,4 +68,8 @@ export class ProductsService {
     d[prodIndex] = data;
     this.cart$.next(d);
   }
+  removeProductProductInCart(id: string | number): void {
+    const dd = this.cart$.value.filter(d => d.id !== id);
+    this.cart$.next(dd);
+  }
 }

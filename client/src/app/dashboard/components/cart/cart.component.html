@@ -59,7 +59,7 @@
                       <app-inputs-type-b type="quantity" formControlName="qty" (onInputChange)="change($event, i, quantity?.value)"></app-inputs-type-b>
                     </div>
                     <div class="ml-6">
-                        <button class="btn-none" (click)="removeCartItemFromCartFormGroupArray(i)">
+                        <button class="btn-none" (click)="removeCartItemFromCartFormGroupArray(i, quantity?.value)">
                             <img src="assets/svg/delete-icon.svg" alt="" class="icon-20">
                         </button>
                     </div>

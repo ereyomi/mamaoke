@@ -37,8 +37,8 @@
                 <span class="m-0 p-0 s15-h24 ml-6">15</span>
             </div>
             <div class="price-section">
-                <p class="m-0 s15-h24"><b>NGN</b> 20,000</p>
-                <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p>
+                <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>
+                <!-- <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p> -->
             </div>
         </div>
 
@@ -56,10 +56,10 @@
 
                 <div>
                     <div class="ml-6 ml-md-0" >
-                      <app-inputs-type-b type="quantity" formControlName="qty"></app-inputs-type-b>
+                      <app-inputs-type-b type="quantity" formControlName="qty" (onInputChange)="change($event, i, quantity?.value)"></app-inputs-type-b>
                     </div>
                     <div class="ml-6">
-                        <button class="btn-none">
+                        <button class="btn-none" (click)="removeCartItemFromCartFormGroupArray(i)">
                             <img src="assets/svg/delete-icon.svg" alt="" class="icon-20">
                         </button>
                     </div>
@@ -82,11 +82,11 @@
 </ng-template>
 
 <ng-template #bagFormA>
-    <div>
+    <div [formGroup]="orderFormGroup">
         <div class="bag-header">
             <div class="">
                 <p class="m-0 p-0 s22-h32 text-weight-bold">Mama Oke</p>
-                <p class="m-0 p-0 text-weight-medium s15-h24">Shipping</p>
+                <p class="m-0 p-0 text-weight-medium s15-h24">Resturant</p>
             </div>
         </div>
         <div class="bag-contents">
@@ -99,12 +99,21 @@
                 <div class="col p-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
                         <div>
-                            <app-inputs-type-b type="input" [config]="inputConfig('First Name')"></app-inputs-type-b>
+                            <app-inputs-type-b
+                            type="input"
+                            [config]="inputConfig('First Name')"
+                            formControlName="firstName">
+                          </app-inputs-type-b>
                         </div>
                     </div>
                     <div class="col-5">
                         <div>
-                            <app-inputs-type-b type="input" [config]="inputConfig('Last Name')"></app-inputs-type-b>
+                            <app-inputs-type-b
+                            type="input"
+                            [config]="inputConfig('Last Name')"
+                            formControlName="lastName"
+                            >
+                          </app-inputs-type-b>
                         </div>
                     </div>
                 </div>
@@ -115,7 +124,12 @@
                 <div class="col-12 mt-20">
                     <div>
                         <label class="m-0 s12-h16 text-weight-bold">Your Email</label>
-                        <app-inputs-type-b type="input" [config]="inputConfig('Email', 'email')"></app-inputs-type-b>
+                        <app-inputs-type-b
+                        type="input"
+                        [config]="inputConfig('Email', 'email')"
+                        formControlName="email"
+                        >
+                      </app-inputs-type-b>
                     </div>
                 </div>
             </div>
@@ -130,7 +144,11 @@
                     <p class="m-0 mr-16">
                     +234
                     </p>
-                    <app-inputs-type-b type="input" [config]="inputConfig('Number', 'tel')"></app-inputs-type-b>
+                    <app-inputs-type-b
+                      type="input"
+                      [config]="inputConfig('Number', 'tel')"
+                      formControlName="phone"
+                    ></app-inputs-type-b>
 
                 </div>
             </div>
@@ -139,7 +157,11 @@
                 <div class="col-12 mt-20">
                     <div>
                        <label class="m-0 s12-h16 text-weight-bold">Delivery Address</label>
-                        <app-inputs-type-b type="input" [config]="inputConfig('Full Address')"></app-inputs-type-b>
+                        <app-inputs-type-b
+                        type="input"
+                        [config]="inputConfig('Full Address')"
+                        formControlName="address"
+                        ></app-inputs-type-b>
                     </div>
                 </div>
             </div>
@@ -163,8 +185,8 @@
             <span class="m-0 p-0 s15-h24 ml-6">5</span>
         </div>
         <div class="price-section">
-            <p class="m-0 s15-h24"><b>NGN</b> 20,000</p>
-            <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p>
+            <p class="m-0 s15-h24"><b>NGN</b> {{totalAmount}}</p>
+           <!--  <p class="m-0 s15-h24"><b>Shipping:</b> NGN 1,000</p> -->
         </div>
     </div>
 </ng-template>

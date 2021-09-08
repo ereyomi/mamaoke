@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InputConfig } from '../../models/input/input-config';
 
@@ -19,7 +19,7 @@ export class InputsTypeBComponent implements OnInit, ControlValueAccessor {
   @Input() config!: InputConfig;
   @Input() class!: string;
   @Input() type!: string;
-
+  @Output() onInputChange: EventEmitter<any> = new EventEmitter();
   onChange!: (_: any) => void;
   onTouched!: () => void;
   value: any;
@@ -30,6 +30,9 @@ export class InputsTypeBComponent implements OnInit, ControlValueAccessor {
   writeValue(obj: any): void {
     this.value = obj;
     this.componentFormGroup.setValue({ input: obj });
+    // emit
+    this.onInputChange.emit(obj);
+    /*  */
     this.componentFormGroup.updateValueAndValidity();
   }
   registerOnChange(fn: any): void {

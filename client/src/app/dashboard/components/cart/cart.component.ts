@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { RequestService } from 'src/app/core/request/request.service';
 import {Flutterwave, InlinePaymentOptions, PaymentSuccessResponse} from "flutterwave-angular-v3"
+import { distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,8 +19,16 @@ export class CartComponent implements OnInit {
   switchIt: any = 'bag';
   isDisplay = true; // change back to false
   isDisplay$!: Subscription;
+  totalAmount: number = 0;
   componentForm = this.fb.group({
     cartFormGroup: this.fb.array([])
+  });
+  orderFormGroup = this.fb.group({
+    firstName: '',
+    lasttName: '',
+    email: '',
+    phone: '',
+    address: ''
   });
   cart$: any;
   cartItems: any;
@@ -65,6 +74,7 @@ export class CartComponent implements OnInit {
     this.cart$ = this.pS.getProductsinCart().subscribe(d =>
       {
         this.cartItems = d
+        console.log(d);
         this.onLoadCartFormArray(this.cartItems);
       });
   }
@@ -137,7 +147,6 @@ export class CartComponent implements OnInit {
       });
     }
   }
-
   onLoadCartFormArray(data: any) {
     const cartFormGroupArray: FormArray = this.cartItemsFormGroup();
     this.clearFormArray(cartFormGroupArray);
@@ -146,12 +155,19 @@ export class CartComponent implements OnInit {
       data.forEach((o: any) => {
         this.updateCheckControl(cartFormGroupArray, o);
       });
+      this.totalAmount = data.reduce((accumulator: any, currentValue: any) => {
+        return accumulator + (currentValue.amount * currentValue.qty)
+      }, 0
+      );
     }
-
   }
   clearFormArray = (formArray: FormArray) => {
     while (formArray.length !== 0) {
       formArray.removeAt(0)
     }
+  }
+  change(e: any, _i: number, q: any) {
+    this.pS.updateProductInCart(
+      {...q, qty: e});
   }
 }

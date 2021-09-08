@@ -16,7 +16,7 @@ export class ProductsService {
     image: 'pepper-soup-goat-meat.jpg',
     amount: 1500,
     category: 'soup',
-    qty: 1
+    qty: 2
   },
   {
     id: 56,
@@ -24,8 +24,8 @@ export class ProductsService {
     image: 'pepper-soup-goat-meat.jpg',
     amount: 1500,
     category: 'soup',
-    qty: 1
-  }
+    qty: 2
+  },
 ]);
 
   constructor() { }
@@ -60,5 +60,12 @@ export class ProductsService {
   }
   getProductsinCart() {
     return this.cart$.asObservable();
+  }
+  updateProductInCart(data: any) {
+    const d = [...this.cart$.value];
+    // perform deep find Index
+    const prodIndex = d.findIndex(dd => dd.id === data.id);
+    d[prodIndex] = data;
+    this.cart$.next(d);
   }
 }

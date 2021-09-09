@@ -20,8 +20,8 @@ export class DashboardHeaderComponent implements OnInit {
 /*
   @HostListener('document:click', ['$event'])
   clickout(event: { target: any; }) {
-    // console.log(event.target.localName);
-    // this.eRef.nativeElement
+    console.log(event.target.localName);
+    this.eRef.nativeElement
     this.eventChecker(event);
   } */
   searchConfig: InputConfig = InputConfigWithPrefix('', 'search', 'Search by food name', 'search');

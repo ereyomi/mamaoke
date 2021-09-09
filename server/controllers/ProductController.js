@@ -8,7 +8,14 @@ const list = async ( req, res ) => {
     if ( error ) {
         return res.status( 400 ).json( error )
     } else {
-         return res.status( 200 ).json( data )
+        if(data) {
+            return res.status( 200 ).json(
+                {
+                    ...data,
+                    serverUrl:`${req.protocol}://${req.get('host')}`
+                }
+            )
+        }
     }
 }
 const getOne = async ( req, res ) => {

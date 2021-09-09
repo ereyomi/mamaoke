@@ -138,17 +138,18 @@ const postSingleImg = (req, res) => {
     })
   }
 }
-
-
 const postMultipleImg =  (req, res, next) => {    
     return res.send( {
       success: true,
       file: req.files // there is an array of files info
     })
 }
-
-
 const getFileWithPath = (requestFile) => {
   return requestFile.path.replace(/\\/g, "/").substring('public'.length);
 }
+
+/* const addServerUrlToImgePathOnGetImage = (req) => {
+  const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+} */
+
 module.exports = {upload, list, getOne, create, update, deleteModel, uploadSingle, uploadMultiple, postSingleImg, postMultipleImg, getFileWithPath}

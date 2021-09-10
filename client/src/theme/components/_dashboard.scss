@@ -278,6 +278,50 @@
   @include media(">=tablet") {
     padding: rem(30) rem(40);
   }
+  &.menu-component {
+    @include  flex-wrap(wrap);
+  @include justify-content(center);
+  gap: 30px;
+    .cat-list-sm {
+      padding: rem(30) rem(5);
+      width: 100px;
+      height: 180px;
+      @include media(">=tablet") {
+        padding: rem(30) rem(5);
+        width: 150px;
+        height: 280px;
+      }
+      .cat-icon {
+        .cat-icon-holder {
+          width: rem(60);
+          height: rem(60);
+          overflow: hidden;
+
+          @include media(">=tablet") {
+            width: rem(100);
+            height: rem(100);
+          }
+
+          img {
+            width: rem(60);
+            height: rem(60);
+
+            @include media(">=tablet") {
+              width: rem(100);
+              height: rem(100);
+            }
+          }
+        }
+      }
+      .cat-text {
+        font-size: 0.8rem !important;
+
+        @include media(">=tablet") {
+          font-size: 1rem !important;
+        }
+      }
+    }
+  }
 
   .cat-list-sm {
     width: 80px;

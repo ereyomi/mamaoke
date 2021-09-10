@@ -23,11 +23,11 @@ export class CartComponent implements OnInit {
     cartFormGroup: this.fb.array([])
   });
   orderFormGroup = this.fb.group({
-    firstName: 'Ereyomi',
-    lastName: 'Oluwaseyi',
-    email: 'ere@gmail.com',
-    phone: '7035432921',
-    address: 'Nil'
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: ''
   });
   cart$: any;
   cartItems: any;

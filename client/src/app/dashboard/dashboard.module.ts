@@ -15,6 +15,8 @@ import { OrdersListComponent } from './components/orders/orders-list/orders-list
 import { OrdersDetailsComponent } from './components/orders/orders-details/orders-details.component';
 import { InvoiceComponent } from './components/orders/invoice/invoice.component';
 import { DashboardProductsPageeComponent } from './components/dashboard-products-pagee/dashboard-products-pagee.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 
@@ -29,7 +31,9 @@ import { DashboardProductsPageeComponent } from './components/dashboard-products
     OrdersListComponent,
     OrdersDetailsComponent,
     InvoiceComponent,
-    DashboardProductsPageeComponent
+    DashboardProductsPageeComponent,
+    ProductViewComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@ import { NavigationComponent } from './navigation.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BottomnavComponent } from './components/bottomnav/bottomnav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   exports: [NavigationComponent, SidebarComponent, BottomnavComponent]
 })

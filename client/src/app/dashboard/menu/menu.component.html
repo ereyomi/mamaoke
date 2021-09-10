@@ -1,0 +1,15 @@
+<div class="dash-categories-component menu-component">
+  <div class="cat-list-sm" *ngFor="let category of categories">
+    <div class="cat-icon">
+      <div class="cat-icon-holder">
+        <img [src]="'assets/categories/' + category.icon"
+        [alt]="category.name"
+        />
+      </div>
+    </div>
+    <div class="cat-text">
+      <p>{{ category.name }}</p>
+    </div>
+  </div>
+</div>
+

@@ -6,6 +6,7 @@ import { InvoiceComponent } from "./components/orders/invoice/invoice.component"
 import { OrdersDetailsComponent } from "./components/orders/orders-details/orders-details.component";
 import { OrdersListComponent } from "./components/orders/orders-list/orders-list.component";
 import { DashboardComponent } from "./dashboard.component";
+import { MenuComponent } from "./menu/menu.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
         component: DashboardProductsPageeComponent
       },
       {
@@ -31,6 +36,10 @@ const routes: Routes = [
       {
         path: 'invoice',
         component: InvoiceComponent,
+      },
+      {
+        path: 'menu',
+        component: MenuComponent,
       }
     ]
   },

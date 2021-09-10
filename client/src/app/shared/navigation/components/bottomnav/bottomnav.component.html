@@ -3,8 +3,8 @@
     <li *ngFor="let item of sideMenu; let i = index">
       <div
         class="mainMenu"
-        (click)="activateSideMenu(i+1)"
-        [ngClass]="{ 'active': item?.isActive }"
+        [routerLink]="'/'+item?.link"
+        routerLinkActive="active"
       >
         <div class="icon-sec">
           <fa-icon [icon]="item.icon" class="icon mr-6"></fa-icon>

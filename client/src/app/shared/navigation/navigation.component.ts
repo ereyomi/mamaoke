@@ -36,8 +36,8 @@ export class NavigationComponent implements OnInit {
     this.screenWidth = e.target.innerWidth;
     this.screenChange();
   }, 200);
-  _targetedScreenWidth = 765;
-  targetedScreenWidth =  1024;
+  targetedScreenWidth = 765;
+  _targetedScreenWidth =  1024;
   screenWidth: any;
   smallScreenStatus!: boolean;
   biggerScreenStatus!: boolean;
@@ -45,37 +45,37 @@ export class NavigationComponent implements OnInit {
   sideMenu: Menu[] = [
     {
       menu: 'Home',
-      link: '',
+      link: 'dashboard/home',
       isActive: true,
-      icon: faHouseUser
+      icon: faHouseUser,
     },
     {
       menu: 'Menu',
-      link: '',
+      link: 'dashboard/menu',
       isActive: false,
       icon: faBookOpen
     },
     {
       menu: 'Article',
-      link: '',
+      link: 'dashboard/article',
       isActive: false,
       icon: faNewspaper
     },
     {
       menu: 'Settings',
-      link: '',
+      link: 'dashboard/settings',
       isActive: false,
       icon: faUserCog
     },
     {
       menu: 'Products',
-      link: '',
+      link: 'dashboard/products',
       isActive: false,
       icon: faStore
     },
     {
       menu: 'Orders',
-      link: '',
+      link: 'dashboard/orders',
       isActive: false,
       icon: faShoppingBasket
     },

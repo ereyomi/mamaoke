@@ -11,13 +11,13 @@ module.exports = {
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
-       /*  references: { // I have an error here:: i think its because the product page get created before the category model
+        references: { // I have an error here:: i think its because the product page get created before the category model
           model: {
             tableName: 'categories',
             schema: 'schema'
           },
           key: 'id'
-        }, */
+        },
       },
       title: {
         type: Sequelize.STRING

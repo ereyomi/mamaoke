@@ -38,8 +38,11 @@ try {
 
 /*  */
 //router routes
+const userRouter = require('./server/router/UserRouter')
 const productRouter = require('./server/router/ProductRouter')
 const categoryRouter = require('./server/router/CategoryRouter')
+
+app.use('/api', userRouter)
 app.use('/api', productRouter);
 app.use('/api', categoryRouter);
 /*  */

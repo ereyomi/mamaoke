@@ -66,10 +66,10 @@ const list = async ( request, model ) => {
 const getOne = async ( req, model ) => {
     const {id} = req.params;
     try {
-        const data = await model.findOne( {
+        const d = await model.findOne( {
             where: {id: id},
         } );
-        data = data;
+        data = d;
     } catch ( error ) {
         error = error;
     }

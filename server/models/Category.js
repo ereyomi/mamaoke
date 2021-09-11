@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
     }
-  };
+  }
   Category.init({
     id: {primaryKey: true, type: DataTypes.INTEGER, autoIncrement: true},
     name: DataTypes.STRING,

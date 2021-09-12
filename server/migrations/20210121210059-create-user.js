@@ -25,14 +25,19 @@ module.exports = {
         type: Sequelize.STRING
       },
       token: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      refreshToken: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       role: {
         type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE4
       },
       updatedAt: {
         allowNull: false,

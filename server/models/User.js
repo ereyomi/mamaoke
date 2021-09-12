@@ -36,10 +36,14 @@ module.exports = (sequelize, DataTypes) => {
     img_url: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
+    },  
     role: DataTypes.INTEGER,
     password: DataTypes.STRING,
     token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+     refreshToken: {
       type: DataTypes.STRING,
       allowNull: true,
     },

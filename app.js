@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path');
 const express = require('express');
-const bodyParser = require( 'body-parser' );
 const cors = require('cors');
 const app = express();
 
@@ -13,7 +12,7 @@ dotenv.config();
 app.use( cors() );
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
-// using bodyParser to parse JSON bodies into JS objects
+// using bodyParser replaced with express to parse JSON bodies into JS objects
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

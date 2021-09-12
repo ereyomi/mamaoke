@@ -49,20 +49,37 @@ const registerUser = async ( req, res ) => {
       { user_id: user.id, email: email },
       process.env.TOKEN_KEY,
       {
-        expiresIn: "2h",
+        expiresIn: "20s",
       }
         );
 
-    // update token
-    user.token = token;
-    // the name is still "Jane" in the database
-        await user.save();
+    // refresh token 
+            const refreshToken = jwt.sign(
+                { user_id: user.id, email },
+                process.env.REFRESH_TOKEN_KEY,
+                {
+                    expiresIn:  process.env.REFRESH_TOKEN_LIFE,
+                }
+            );
         
-        // get update instance
-        await user.reload();
+            // update token
+            user.token = token;
+            user.refreshToken = refreshToken;
+            // the name is still "Jane" in the database
+            await user.save();
+        
+            // get update instance
+            await user.reload();
 
     // return new user
-    res.status(201).json(user);
+        res.status(200).send({
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        roles: user.role === 0 ? 'user' : 'admin',
+        accessToken: token,
+        refreshToken: refreshToken,
+    });
   } catch (err) {
     return res.status( 400 ).json( {
            error,
@@ -90,12 +107,22 @@ const login = async (req, res) => {
                 { user_id: user.id, email },
                 process.env.TOKEN_KEY,
                 {
-                    expiresIn: "2h",
+                    expiresIn: "15s",
+                }
+            );
+
+            // refresh token 
+            const refreshToken = jwt.sign(
+                { user_id: user.id, email },
+                process.env.REFRESH_TOKEN_KEY,
+                {
+                    expiresIn:  process.env.REFRESH_TOKEN_LIFE,
                 }
             );
         
             // update token
             user.token = token;
+            user.refreshToken = refreshToken;
             // the name is still "Jane" in the database
             await user.save();
         
@@ -103,13 +130,24 @@ const login = async (req, res) => {
             await user.reload();
 
             // user
-            res.status(200).json(user);
+             res.status(200).send({
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                roles: user.role === 0 ? 'user' : 'admin',
+                accessToken: token,
+                refreshToken: refreshToken,
+            });
         } else {
             res.status(400).send("Invalid Credentials"); 
         }
   } catch (err) {
     console.log(err);
   }
+}
+
+const getNewTokenWithRefreshToken = (req, res) => {
+    
 }
 
 

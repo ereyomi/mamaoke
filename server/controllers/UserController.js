@@ -146,9 +146,76 @@ const login = async (req, res) => {
   }
 }
 
-const getNewTokenWithRefreshToken = (req, res) => {
+
+const getUserRefreshToken = async (req, res) => {
+  const { refreshToken: requestToken } = req.body;
+
+  if (requestToken === null) {
+    return res.status(403).json({ message: "Refresh Token is required!" });
+  }
+
+  try {
+    let getUserRefreshToken = await User.findOne({ where: { refreshToken: requestToken } });
+
+    console.log(getUserRefreshToken)
+
+    if (!getUserRefreshToken) {
+      res.status(403).json({ message: "Refresh token is not in database!" });
+      // return;
+    }
+    jwt.verify(requestToken, process.env.REFRESH_TOKEN_KEY, (err, decoded) => {
+    console.log(err, decoded)
+      if (err) {
+        res.status(403).json({
+        message: "Refresh token was expired. Please make a new signin request",
+      });
+      }
+    });
+      // Create token
+            const token = jwt.sign(
+                { user_id: getUserRefreshToken.id, email: getUserRefreshToken.email },
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "15s",
+                }
+            );
+
+            // refresh token 
+            const refreshToken = jwt.sign(
+                { user_id: getUserRefreshToken.id, email: getUserRefreshToken.email  },
+                process.env.REFRESH_TOKEN_KEY,
+                {
+                    expiresIn:  process.env.REFRESH_TOKEN_LIFE,
+                }
+            );
+       // update token
+        getUserRefreshToken.token = token;
+        getUserRefreshToken.refreshToken = refreshToken;
+        // the name is still "Jane" in the database
+        await getUserRefreshToken.save();
     
-}
+        // get update instance
+        await getUserRefreshToken.reload();
+
+        // user
+            res.status(200).send({
+            id: getUserRefreshToken.id,
+            username: getUserRefreshToken.username,
+            email: getUserRefreshToken.email,
+            roles: getUserRefreshToken.role === 0 ? 'user' : 'admin',
+            accessToken: token,
+            refreshToken: refreshToken,
+        });
+
+    return res.status(200).json({
+      accessToken: newAccessToken,
+      refreshToken: refreshToken.token,
+    });
+  } catch (err) {
+      console.log(err)
+    return res.status(500).send({ message: err, body: req.body });
+  }
+};
 
 
 
@@ -158,5 +225,6 @@ const getNewTokenWithRefreshToken = (req, res) => {
 
 module.exports = {
     registerUser,
-    login
+    login,
+    getUserRefreshToken
 };

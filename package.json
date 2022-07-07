@@ -4,7 +4,7 @@
   "description": "a food ecommerce app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "npm run client:build && node app.js",
     "server": "nodemon app.js",
     "client": "npm start --prefix client",
     "client-install": "cd client && npm install",

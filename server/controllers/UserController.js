@@ -13,7 +13,7 @@ const listUsers = async (req, res) => {
   }
 };
 const getOneUser = async (req, res) => {
-  const { data, error } = await MainController.getOne(req, User);
+  const { data, error } = await MainController.getOneByPk(req, User);
   if (error) {
     return res.status(400).json(error);
   } else {

@@ -96,7 +96,6 @@ const update = async ( model, request ) => {
   }
 
   let data = await model.update( body, {where: {id}} );
-  console.log(data)
   if (data instanceof Array) {
     data = await model.findOne({ where: { id } });
     return { data, message: "update successful", errors: [] };

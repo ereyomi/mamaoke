@@ -33,7 +33,6 @@ export class DashboardDetailsModalComponent implements OnInit {
   }
   openBag(): void {
     this.closeModal();
-    console.log(this.isDisplayProduct, this.componentForm.value);
     const {qty} = this.componentForm.value;
     this.pS.addToCart(
       {

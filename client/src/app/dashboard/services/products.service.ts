@@ -39,7 +39,6 @@ export class ProductsService {
   addToCart(data: any){
     // perform deep find Index
     const prodIndex = this.cart$.value.findIndex(dd => dd.id === data.id);
-    console.log(prodIndex);
     if(prodIndex < 0) {
       this.cart$.next(
         [...this.cart$.value, {...data}]

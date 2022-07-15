@@ -20,7 +20,6 @@ export class DashboardHeaderComponent implements OnInit {
 /*
   @HostListener('document:click', ['$event'])
   clickout(event: { target: any; }) {
-    console.log(event.target.localName);
     this.eRef.nativeElement
     this.eventChecker(event);
   } */

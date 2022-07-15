@@ -5,6 +5,7 @@ const MainController = require('./MainController');
 
 const listUsers = async (req, res) => {
   const { data, error } = await MainController.list(req, User);
+  console.log(data);
   if (error) {
     return res.status(400).json(error);
   } else {
@@ -22,7 +23,6 @@ const getOneUser = async (req, res) => {
 const createUser = async (req, res) => {
   const { body } = req;
   const createData = await MainController.create(User, body);
-  console.log(createData, createData.id);
   if (createData.id) {
     return res.status(200).json({
       ...createData,
@@ -43,7 +43,6 @@ const updateUser = async (req, res) => {
 };
 const deleteUser = async (req, res) => {
   const data = await MainController.deleteModel(User, req);
-  console.log(data);
   if (data) {
     return res.status(200).json(data);
   } else {

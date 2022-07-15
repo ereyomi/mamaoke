@@ -22,7 +22,6 @@ const getOneCategory = async ( req, res ) => {
 const createCategory = async ( req, res ) => {
     const {body} = req;
     const createData = await MainController.create( Category, body );
-    console.log(createData, createData.id);
     if ( createData.id) {
         return res.status( 200 ).json( {
            ...createData
@@ -43,7 +42,6 @@ const updateCategory = async ( req, res ) => {
 }
 const deleteCategory = async ( req, res ) => {
     const data = await MainController.deleteModel( Category, req )
-    console.log(data);
     if ( data ) {
         return res.status( 200 ).json(data)
     } else {

@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormArray, FormGroup, FormControl } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormArray,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { InputConfig } from 'src/app/shared/forms/models/input/input-config';
 import { ProductsService } from '../../services/products.service';
-import {
-  faShoppingCart
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { RequestService } from 'src/app/core/request/request.service';
-import {Flutterwave, InlinePaymentOptions, PaymentSuccessResponse} from 'flutterwave-angular-v3';
+import {
+  Flutterwave,
+  InlinePaymentOptions,
+  PaymentSuccessResponse,
+} from 'flutterwave-angular-v3';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
   faShoppingCart = faShoppingCart;
@@ -20,25 +28,33 @@ export class CartComponent implements OnInit {
   isDisplay$!: Subscription;
   totalAmount: number = 0;
   componentForm = this.fb.group({
-    cartFormGroup: this.fb.array([])
+    cartFormGroup: this.fb.array([]),
   });
   orderFormGroup = this.fb.group({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
-    address: ''
+    address: '',
   });
   cart$: any;
   cartItems: any;
   //use your PUBLIC_KEY here
-  publicKey = "FLWPUBK_TEST-584f40de47a6fa65b4ac934db0ead0b5-X";
+  publicKey = 'FLWPUBK_TEST-584f40de47a6fa65b4ac934db0ead0b5-X';
 
-  customerDetails = { name: 'Demo Customer  Name', email: 'ereyomioluwaseyi@gmail.com', phone_number: '07035432921'};
+  customerDetails = {
+    name: 'Demo Customer  Name',
+    email: 'ereyomioluwaseyi@gmail.com',
+    phone_number: '07035432921',
+  };
 
-  customizations = {title: 'Customization Title', description: 'Customization Description', logo: 'https://flutterwave.com/images/logo-colored.svg'};
+  customizations = {
+    title: 'Customization Title',
+    description: 'Customization Description',
+    logo: 'https://flutterwave.com/images/logo-colored.svg',
+  };
 
-  meta = {'counsumer_id': '7898', 'consumer_mac': 'kjs9s8ss7dd'};
+  meta = { counsumer_id: '7898', consumer_mac: 'kjs9s8ss7dd' };
   paymentData: InlinePaymentOptions = {
     public_key: this.publicKey,
     tx_ref: this.generateReference(),
@@ -51,19 +67,21 @@ export class CartComponent implements OnInit {
     customizations: this.customizations,
     callback: this.makePaymentCallback,
     onclose: this.closedPaymentModal,
-    callbackContext: this
+    callbackContext: this,
   };
   quantityNumber: any;
   numberOfItemsInCart!: number;
-  numberOfItemsInCart$ = this.pS.getTotalNumberOfItemsInCart.subscribe((d: number) => {
-    this.numberOfItemsInCart = d;
-  });
+  numberOfItemsInCart$ = this.pS.getTotalNumberOfItemsInCart.subscribe(
+    (d: number) => {
+      this.numberOfItemsInCart = d;
+    }
+  );
   constructor(
     private fb: FormBuilder,
     private pS: ProductsService,
     private requestS: RequestService,
     private flutterwave: Flutterwave
-    ) { }
+  ) {}
   inputConfig(
     placeholder: string = 'Placeholder',
     type: string = 'text'
@@ -74,13 +92,13 @@ export class CartComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-    this.isDisplay$ = this.pS.getBagModalDisplayStatus().subscribe(status => this.isDisplay = status);
-    this.cart$ = this.pS.getProductsinCart().subscribe(d =>
-      {
-        this.cartItems = d;
-        console.log(d);
-        this.onLoadCartFormArray(this.cartItems);
-      });
+    this.isDisplay$ = this.pS
+      .getBagModalDisplayStatus()
+      .subscribe((status) => (this.isDisplay = status));
+    this.cart$ = this.pS.getProductsinCart().subscribe((d) => {
+      this.cartItems = d;
+      this.onLoadCartFormArray(this.cartItems);
+    });
   }
   closeModal(): void {
     this.pS.closeBagModal();
@@ -96,29 +114,23 @@ export class CartComponent implements OnInit {
     this.isDisplay$.unsubscribe();
   }
   submitDetails(): void {
-    this.requestS.get('/api/payment').subscribe(res => {console.log(res)});
+    this.requestS.get('/api/payment').subscribe((res) => {});
   }
   makePaymentCallback(response: PaymentSuccessResponse): void {
-    console.log("Pay", response);
-    this.flutterwave.closePaymentModal(5)
+    this.flutterwave.closePaymentModal(5);
   }
-  closedPaymentModal(): void {
-    console.log('payment is closed');
-  }
+  closedPaymentModal(): void {}
   generateReference(): string {
     let date = new Date();
     return date.getTime().toString();
   }
   payViaPromise() {
-    this.flutterwave.asyncInlinePay(this.paymentData).then(
-      (response) =>{
-        console.log("Promise Res" , response)
-        this.flutterwave.closePaymentModal(5)
-      }
-    )
+    this.flutterwave.asyncInlinePay(this.paymentData).then((response) => {
+      this.flutterwave.closePaymentModal(5);
+    });
   }
-  cartItemsFormGroup() : FormArray {
-    return this.componentForm.get("cartFormGroup") as FormArray;
+  cartItemsFormGroup(): FormArray {
+    return this.componentForm.get('cartFormGroup') as FormArray;
   }
   cartFormGroupArrayItem(data: any): FormGroup {
     return this.fb.group({
@@ -126,23 +138,21 @@ export class CartComponent implements OnInit {
       name: data?.name || '',
       image: data?.image || '',
       amount: data?.amount || 0,
-      category:  data?.category || 0,
-      qty: data?.qty || 1
-    })
+      category: data?.category || 0,
+      qty: data?.qty || 1,
+    });
   }
   addQuantity(data: any) {
-    this.cartItemsFormGroup().push(
-        this.cartFormGroupArrayItem(data)
-      );
+    this.cartItemsFormGroup().push(this.cartFormGroupArrayItem(data));
   }
 
-  removeCartItemFromCartFormGroupArray(i:number, quantity: any) {
+  removeCartItemFromCartFormGroupArray(i: number, quantity: any) {
     this.cartItemsFormGroup().removeAt(i);
     this.pS.removeProductProductInCart(quantity.id);
   }
   updateCheckControl(cal: any, data: any) {
     if (data.qty) {
-     this.addQuantity(data);
+      this.addQuantity(data);
     } else {
       cal.controls.forEach((item: FormControl, index: any) => {
         if (item.value === data.value) {
@@ -156,24 +166,21 @@ export class CartComponent implements OnInit {
     const cartFormGroupArray: FormArray = this.cartItemsFormGroup();
     this.clearFormArray(cartFormGroupArray);
     if (data) {
-
       data.forEach((o: any) => {
         this.updateCheckControl(cartFormGroupArray, o);
       });
       this.totalAmount = data.reduce((accumulator: any, currentValue: any) => {
-        return accumulator + (currentValue.amount * currentValue.qty);
-      }, 0
-      );
+        return accumulator + currentValue.amount * currentValue.qty;
+      }, 0);
     }
   }
   clearFormArray = (formArray: FormArray) => {
     while (formArray.length !== 0) {
-      formArray.removeAt(0)
+      formArray.removeAt(0);
     }
-  }
+  };
   change(e: any, _i: number, q: any) {
-    this.pS.updateProductInCart(
-      {...q, qty: e});
+    this.pS.updateProductInCart({ ...q, qty: e });
   }
   get orderDetails() {
     return this.orderFormGroup.value;

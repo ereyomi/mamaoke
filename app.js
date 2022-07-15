@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 /*
 app.use('/a',express.static('/b'));
 Above line would serve all files/folders inside of the 'b' directory
-And make them accessible through http://localhost:3000/a.
+And make them accessible through http://localhost:3100/a.
 */
 const dir = path.join(__dirname, 'public');
 app.use(express.static(dir));
@@ -32,9 +32,7 @@ try {
   if (!fs.existsSync(folderName)) {
     fs.mkdirSync(folderName);
   }
-} catch (err) {
-  console.error(err);
-}
+} catch (err) {}
 
 /*  */
 //router routes
@@ -44,7 +42,6 @@ const userRouter = require('./server/router/UserRouter');
 app.use('/api', productRouter);
 app.use('/api', categoryRouter);
 app.use('/api', userRouter);
-/*  */
 
 const port = process.env.PORT || 3100;
 

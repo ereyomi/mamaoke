@@ -118,10 +118,7 @@ const deleteModel = async (model, request) => {
   } catch(error) {
     return { errors: "looks like there is an error while trying to delete ", message: [], data: {} };
   };
-
-
 }
-
 
 const postSingleImg = (req, res) => {
   const host = req.host;

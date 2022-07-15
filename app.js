@@ -38,10 +38,10 @@ try {
 
 /*  */
 //router routes
-/* const productRouter = require('./server/router/ProductRouter')
+const productRouter = require('./server/router/ProductRouter')
 const categoryRouter = require('./server/router/CategoryRouter')
 app.use('/api', productRouter);
-app.use('/api', categoryRouter); */
+app.use('/api', categoryRouter);
 /*  */
 
 const port = process.env.PORT || 3100;
